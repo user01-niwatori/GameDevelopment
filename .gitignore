@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+#Library下除外
+GameDevelopment/Library/
+
+#Debug下除外
+GameDevelopment/obj/Debug/
