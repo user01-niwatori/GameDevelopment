@@ -21,9 +21,9 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public void PointerEnter_DisplayHUD()
         {
-            var core = GetComponent<EmployeeCore>();
+            //var core = GetComponent<EmployeeCore>();
 
-            core.Data.State.Value = Datas.EState.Home;
+            //core.Data.State.Value = Datas.EState.GoToHome;
             _employeeHUD.gameObject.SetActive(true);
         }
 

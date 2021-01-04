@@ -1,6 +1,8 @@
 ﻿using UniRx;
 using UnityEngine.UI;
 using UnityEngine;
+using GameDevelopment.Common.Datas;
+using GameDevelopment.Scenes.Employees.Generators;
 
 namespace GameDevelopment.Scenes.OfficeScenes.UI
 {
@@ -9,6 +11,10 @@ namespace GameDevelopment.Scenes.OfficeScenes.UI
     /// </summary>
     public class DebugUI : MonoBehaviour
     {
+
+        [SerializeField]
+        private EmployeeGenerator _employeeGenerator = default;
+
         /// <summary>
         /// デバッグリストを表示/非表示にするボタン
         /// </summary>
@@ -38,7 +44,7 @@ namespace GameDevelopment.Scenes.OfficeScenes.UI
             // 社員生成ボタン押下時
             _createEmployeeButton
                 .OnClickAsObservable()
-                .Subscribe(_ => Debug.Log("社員を生成します。"))
+                .Subscribe(_ => _employeeGenerator.Create())
                 .AddTo(this);
 
 

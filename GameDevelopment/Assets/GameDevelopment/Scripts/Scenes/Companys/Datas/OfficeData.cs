@@ -100,9 +100,9 @@ namespace GameDevelopment.Scenes.Companys.Datas
         /// <summary>
         /// 社員人数
         /// </summary>
-        public int EmployeeCount()
+        public int EmployeeCount
         {
-            return Employees.Count;
+            get { return Employees.Count; }
         }
 
         #endregion
@@ -112,9 +112,9 @@ namespace GameDevelopment.Scenes.Companys.Datas
         /// <summary>
         /// ゲームハードの数
         /// </summary>
-        public int GameHardCount()
+        public int GameHardCount
         {
-            return GameHards.Count;
+            get { return GameHards.Count; }
         }
 
         /// <summary>
@@ -161,9 +161,9 @@ namespace GameDevelopment.Scenes.Companys.Datas
         /// <summary>
         /// ゲームソフトの数
         /// </summary>
-        public int GameSoftCount()
+        public int GameSoftCount
         {
-            return GameSofts.Count;
+            get { return GameSofts.Count; }
         }
 
         /// <summary>

@@ -32,26 +32,36 @@ namespace GameDevelopment.Scenes.Employees.Generators
         /// </summary>
         public void Initialize()
         {
-            // 社員を生成
-            int employeeCount = GameInfo.User.Company.CurrentOffice.EmployeeCount();
+            // セーブ済みの社員を生成
+            int employeeCount = GameInfo.User.Company.CurrentOffice.EmployeeCount;
             for (int i = 0; i < employeeCount; i++)
             {
-                Create(i, GameInfo.User.Company.CurrentOffice.Employees[i].ID);
+                Load(i);
             }
         }
 
         /// <summary>
-        /// 社員を生成
+        /// 社員読み込み/表示
         /// </summary>
-        /// <param name="number">何番目に生成されたか</param>
-        /// <param name="id">生成する社員のID</param>
-        public void Create(int number, int id)
+        /// <param name="number">何番目に生成された社員か？</param>
+        private void Load(int number)
         {
-            var employee = Instantiate(_employeePrefabs[id].gameObject);
+            int id                    = GameInfo.User.Company.CurrentOffice.Employees[number].ID;
+            var employee              = Instantiate(_employeePrefabs[id].gameObject);
             employee.transform.parent = _parent.transform;
             employee.GetComponent<EmployeeCore>().Initialize(number);
             _employees.Add(_employeePrefabs[id]);
+        }
 
+
+        /// <summary>
+        /// 社員を生成
+        /// </summary>
+        /// <param name="id">生成する社員のID</param>
+        public void Create(int id = 0)
+        {
+            GameInfo.User.Company.CurrentOffice.CreateEmployees(id);
+            Load(GameInfo.User.Company.CurrentOffice.EmployeeCount - 1);
         }
     }
 }

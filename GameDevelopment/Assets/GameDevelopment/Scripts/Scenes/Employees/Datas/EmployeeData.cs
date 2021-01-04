@@ -10,11 +10,12 @@ namespace GameDevelopment.Scenes.Employees.Datas
     /// </summary>
     public enum EState
     {
-        None,     // 何もしない
-        Arrive,   // 出社
-        Work,     // 仕事
-        Rest,     // 休む
-        Home,     // 家に帰る
+        None,         // 何もしない
+        Work,         // 仕事
+        Rest,         // 休む
+        GoToWork,     // 出社する
+        GoToHome,     // 家に帰る
+        Sleep,        // 寝る
     }
 
     /// <summary>
@@ -41,7 +42,7 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// <summary>
         /// 体力
         /// </summary>
-        public int HP = 0;
+        public ReactiveProperty<int> HP = new ReactiveProperty<int>();
 
         /// <summary>
         /// 制作時間
@@ -103,6 +104,7 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// <param name="id"></param>
         public EmployeeData(int id)
         {
+            ID = id;
             Name = $"社員:{id}";
             //Debug.Log($"{Name}社員が作成されました");
         }
@@ -140,6 +142,8 @@ namespace GameDevelopment.Scenes.Employees.Datas
             new Vector3(1.5f, 1, 0),
             new Vector3(-1.5f, 1, -1),
             new Vector3(1.5f, 1, -1),
+            new Vector3(-1.5f, 1, -2),
+            new Vector3(1.5f, 1, -2),
         };
 
         /// <summary>
@@ -147,6 +151,8 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// </summary>
         public static Quaternion[] Rotation = new Quaternion[]
         {
+            Quaternion.Euler(0, 90, 0),
+            Quaternion.Euler(0, -90, 0),
             Quaternion.Euler(0, 90, 0),
             Quaternion.Euler(0, -90, 0),
             Quaternion.Euler(0, 90, 0),
