@@ -151,7 +151,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void CheckGoToWork()
         {
-            if (_navMeshAgent.remainingDistance < 0.05f)
+            if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 transform.rotation = _defalutRotation;
                 _employeeCore.Data.State.Value = EState.Work;
@@ -164,7 +164,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void CheckGoToHome()
         {
-            if (_navMeshAgent.remainingDistance < 10f)
+            if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 _employeeCore.Data.State.Value = EState.Sleep;
             }

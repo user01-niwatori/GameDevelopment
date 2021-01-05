@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
-using GameDevelopment.Common.Datas;
+using UniRx;
 
-public class Initialize_Logo : MonoBehaviour
+namespace GameDevelopment.Scenes.LogoScenes
 {
-
-    private void Start()
+    /// <summary>
+    /// 初期化　ロゴ表示
+    /// </summary>
+    public class Initialize_Logo : MonoBehaviour
     {
-        //GameInfo.User.Company.CreateOffice();
-
-        //Debug.LogError(GameInfo.User.Company.Name);
+        /// <summary>
+        /// Start
+        /// </summary>
+        private async void Start()
+        {
+            await SceneFadeManager.Instance.OnTransitionFinished;
+            SceneFadeManager.Instance.Transition(SceneName.DataCheck);
+        }
     }
 }

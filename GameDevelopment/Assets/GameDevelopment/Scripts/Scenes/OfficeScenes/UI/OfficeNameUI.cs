@@ -2,7 +2,6 @@
 using GameDevelopment.Common.Datas;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class OfficeNameUI : MonoBehaviour
 {
@@ -34,7 +33,6 @@ public class OfficeNameUI : MonoBehaviour
         //    .AddTo(this);
 
         GameInfo.User.CreateCompany("うんこ");
-
         _messageText.text = "名前を入力してください。";
 
         // OKボタンが押され...
@@ -69,7 +67,6 @@ public class OfficeNameUI : MonoBehaviour
                 return false;
             }
         }
-
         return true;
     }
 
@@ -86,7 +83,7 @@ public class OfficeNameUI : MonoBehaviour
             GameInfo.User.Company.CurrentOffice.CreateEmployees(0);
         }
 
-        SceneManager.LoadScene("04_Office");
+        SceneFadeManager.Instance.Transition(SceneName.Office);
         Destroy(this.gameObject);
     }
 }

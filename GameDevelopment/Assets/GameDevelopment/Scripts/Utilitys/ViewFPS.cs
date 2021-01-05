@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ViewFPS : MonoBehaviour
 {
+    [SerializeField]
+    private Text _fpsText = default;
+
     [SerializeField]
     private float Interval = 0.1f;
     private float _time_cnt;
@@ -27,10 +28,7 @@ public class ViewFPS : MonoBehaviour
         _time_mn = Interval;
         _time_cnt = 0;
         _frames = 0;
-    }
 
-    private void OnGUI()
-    {
-        GUILayout.Label("FPS: " + _fps.ToString("f2"));
+        _fpsText.text = "FPS: " + _fps.ToString("f2");
     }
 }

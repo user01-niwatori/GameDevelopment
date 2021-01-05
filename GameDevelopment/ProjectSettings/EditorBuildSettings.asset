@@ -12,12 +12,18 @@ EditorBuildSettings:
     path: Assets/GameDevelopment/Scenes/01_Logo.unity
     guid: 7ed2bb9e494e6a342a86481a333fdbc8
   - enabled: 1
+    path: Assets/GameDevelopment/Scenes/02_DataCheck.unity
+    guid: 57b94ac396d040b4fac7128159e07bfc
+  - enabled: 1
+    path: Assets/GameDevelopment/Scenes/03_Title.unity
+    guid: 1b20115ced171af4d868b23a77f56bcb
+  - enabled: 1
     path: Assets/GameDevelopment/Scenes/04_Office.unity
     guid: f995e80907720ed44af5797cf8da7bc9
   - enabled: 1
     path: Assets/GameDevelopment/Scenes/Test.unity
     guid: 4476926aa6498ba4b86fed65357aa91b
   - enabled: 0
-    path: Assets/GameDevelopment/Scenes/Test02.unity
+    path: 
     guid: b169b2840d2d84747b884b4755ca57a5
   m_configObjects: {}
