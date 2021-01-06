@@ -89,7 +89,8 @@ public class RaycastMask : MonoBehaviour, ICanvasRaycastFilter
         }
         catch (UnityException e)
         {
-            Debug.LogError("Mask texture not readable, set your sprite to Texture Type 'Advanced' and check 'Read/Write Enabled'");
+            Debug.LogError($"Mask texture not readable, set your sprite to Texture Type 'Advanced' and check 'Read/Write Enabled' \n" +
+                           $"ErrorMessage: {e} ");
             Destroy(this);
             return false;
         }

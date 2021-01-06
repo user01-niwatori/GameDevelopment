@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+//using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
@@ -72,7 +72,7 @@ public class CsvLoadManager : SingletonMonoBehaviour<CsvLoadManager>
     /// 社員のCsvデータをロードする。
     /// </summary>
     /// <returns></returns>
-    private async UniTaskVoid LoadEmployeeCsvAsync()
+    private void LoadEmployeeCsvAsync()
     {
         // Resources.LoadでResourcesフォルダのcsvファイル読み込み
         // Unityのテキスト読み込み用形式であるTextAssetに変換
