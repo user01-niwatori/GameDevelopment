@@ -4,7 +4,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine.AI;
 
-/*  NavMeshAgentの概要
+/*  NavMeshAgentの設定内容
 
     Agent Type                  エージェントのタイプ
     Base Offset                 エージェントの位置のオフセット
@@ -112,11 +112,11 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                     _moveType.Value = EMoveType.Idle;
                     break;
                 case EState.GoToHome:
-                    _navMeshAgent.SetDestination(_homePosition);
+                    Movement(_homePosition);
                     _moveType.Value = EMoveType.Move;
                     break;
                 case EState.GoToWork:
-                    _navMeshAgent.SetDestination(_defalutPosition);
+                    Movement(_defalutPosition);
                     _moveType.Value = EMoveType.Move;
                     break;
                 case EState.Work:
@@ -127,6 +127,24 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                     break;
             }
 
+        }
+
+        /// <summary>
+        /// 移動処理
+        /// </summary>
+        /// <param name="targetPos">目的地</param>
+        private void Movement(Vector3 targetPos)
+        {
+            _navMeshAgent.isStopped = false;
+            _navMeshAgent.SetDestination(targetPos);
+        }
+
+        /// <summary>
+        /// 移動停止
+        /// </summary>
+        private void Stop()
+        {
+            _navMeshAgent.isStopped = true;
         }
 
         /// <summary>
@@ -151,9 +169,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void CheckGoToWork()
         {
+            // 仕事場にたどり着いたら仕事をする
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
-                transform.rotation = _defalutRotation;
+                Stop();
                 _employeeCore.Data.State.Value = EState.Work;
             }
         }
@@ -164,8 +183,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void CheckGoToHome()
         {
+            // 家に着いたら寝る
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
+                Stop();
                 _employeeCore.Data.State.Value = EState.Sleep;
             }
         }

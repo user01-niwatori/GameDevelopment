@@ -140,10 +140,10 @@ namespace GameDevelopment.Scenes.Employees.Datas
         {
             new Vector3(-1.5f, 1, 0),
             new Vector3(1.5f, 1, 0),
-            new Vector3(-1.5f, 1, -1),
-            new Vector3(1.5f, 1, -1),
             new Vector3(-1.5f, 1, -2),
             new Vector3(1.5f, 1, -2),
+            new Vector3(-1.5f, 1, -4),
+            new Vector3(1.5f, 1, -4),
         };
 
         /// <summary>

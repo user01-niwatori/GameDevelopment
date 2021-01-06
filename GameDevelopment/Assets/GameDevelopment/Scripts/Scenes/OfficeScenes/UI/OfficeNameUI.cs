@@ -78,7 +78,7 @@ public class OfficeNameUI : MonoBehaviour
         // オフィス作成
         // 社員を生成
         GameInfo.User.Company.CreateOffice(_inputField.text);
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 1; i++)
         {
             GameInfo.User.Company.CurrentOffice.CreateEmployees(0);
         }
