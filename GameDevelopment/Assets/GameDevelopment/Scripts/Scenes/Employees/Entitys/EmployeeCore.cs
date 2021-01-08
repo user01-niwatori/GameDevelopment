@@ -1,6 +1,5 @@
 ﻿using System;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
@@ -17,6 +16,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     [RequireComponent(typeof(EmployeeMover))]
     public class EmployeeCore : MonoBehaviour
     {
+        /// <summary>
+        /// HPを引く値
+        /// </summary>
+        private const int SubtractHP = 1;
 
         /// <summary>
         /// 社員番号（何番目に生成された社員）
@@ -26,6 +29,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </remarks>
         private int _number = 0;
 
+        /// <summary>
+        /// 体力の最大値
+        /// </summary>
+        private int _maxHP = 0;
 
         ///// <summary>
         ///// 状態
@@ -68,33 +75,70 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 transform.rotation = EmployeeLocationInfo.Rotation[_number];
             }
 
-            Data.State.Value = EEmployeeState.Work;
-            Data.HP.Value = UnityEngine.Random.Range(20, 100);
+            OnUpdate();
+            CheckData();
 
+            Data.HP.Value       = UnityEngine.Random.Range(10, 50);
+            Data.Program.Value  = UnityEngine.Random.Range(10, 50);
+            Data.Graphic.Value  = UnityEngine.Random.Range(10, 50);
+            Data.Scenario.Value = UnityEngine.Random.Range(10, 50);
+            Data.Sound.Value    = UnityEngine.Random.Range(10, 50);
+
+        }
+
+        /// <summary>
+        /// 更新処理
+        /// </summary>
+        private void OnUpdate()
+        {
             // 指定秒数経ったら
             // 仕事中で体力があるなら
-            // HP -= 10
+            // HP -= 引く値
             Observable
-                .Interval(TimeSpan.FromSeconds(2f))
+                .Interval(TimeSpan.FromSeconds(Data.DevelopmentTime))
                 .Where(_ => Data.State.Value == EEmployeeState.Work && Data.HP.Value > 0)
-                .Subscribe(_ => Data.HP.Value -= 10)
+                .Subscribe(_ => Data.HP.Value -= SubtractHP)
                 .AddTo(this);
 
+            //Observable
+            //    .Interval(TimeSpan.FromSeconds(5f))
+            //    .Subscribe(_ =>
+            //    {
+            //        Data.HP.Value += 1;
+            //        Data.Scenario.Value += 2;
+            //        Data.Graphic.Value += 3;
+            //        Data.Sound.Value += 4;
+            //        Data.Program.Value += 5;
+            //    })
+            //    .AddTo(this);
+        }
+
+        /// <summary>
+        /// データの変化を調べる
+        /// </summary>
+        private void CheckData()
+        {
+            // 現在のHPがHPの最大値を上回ったら
+            // 現在のHPをHPの最大値として設定する。
+            Data.HP
+                .Where(x => x > _maxHP)
+                .Subscribe(x => _maxHP = x);
+
             // 仕事中にHPが0以下になったら
-            // 家に帰る
+            // 家に帰る。
             Data.HP
                 .Where(x => Data.State.Value == EEmployeeState.Work && x <= 0)
                 .Subscribe(_ => Data.State.Value = EEmployeeState.GoToHome)
                 .AddTo(this);
 
             // 家で睡眠中にHPが満タンになったら
-            // 仕事に行く
+            // 仕事に行く。
             Data.HP
-                .Where(x => Data.State.Value == EEmployeeState.Sleep && x >= 50)
+                .Where(x => Data.State.Value == EEmployeeState.Sleep && x >= _maxHP)
                 .Subscribe(_ => Data.State.Value = EEmployeeState.GoToWork)
                 .AddTo(this);
 
-            // 状態を監視し、変化次第チェックする
+            // 状態を監視し、変化次第チェックする。
             Data.State
                 .Subscribe(x => CheckState(x));
         }
@@ -124,8 +168,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void Work()
         {
-            Debug.Log("仕事中");
-            //GameInfo.User.Company.CurrentOffice.
         }
 
         /// <summary>

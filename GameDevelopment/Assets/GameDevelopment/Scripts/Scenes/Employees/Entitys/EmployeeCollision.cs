@@ -11,20 +11,20 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     public class EmployeeCollision : MonoBehaviour
     {
         /// <summary>
-        /// HUD
+        /// 社員情報表示用クラス
         /// </summary>
         [SerializeField]
-        private EmployeeHUD _employeeHUD = default;
+        private EmployeeView _employeeView = default;
 
         /// <summary>
         /// コントローラーのRayがオブジェクトに乗ったときHUD表示
         /// </summary>
         public void PointerEnter_DisplayHUD()
         {
-            //var core = GetComponent<EmployeeCore>();
-
-            //core.Data.State.Value = Datas.EState.GoToHome;
-            _employeeHUD.gameObject.SetActive(true);
+            if(_employeeView)
+            {
+                _employeeView.gameObject.SetActive(true);
+            }
         }
 
         /// <summary>
@@ -32,7 +32,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public void PointerExit_HideHUD()
         {
-            _employeeHUD.gameObject.SetActive(false);
+            if(_employeeView)
+            {
+                _employeeView.gameObject.SetActive(false);
+            }
         }
     }
 }

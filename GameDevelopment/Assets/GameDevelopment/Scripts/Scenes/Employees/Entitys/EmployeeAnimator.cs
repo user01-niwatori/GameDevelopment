@@ -69,6 +69,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
 
             if(mover)
             {
+                // 状態が変わりしだい発行
                 mover.MoveType.Subscribe(x => SetAnimation(x));
             }
         }

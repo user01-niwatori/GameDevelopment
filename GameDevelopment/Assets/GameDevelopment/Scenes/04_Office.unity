@@ -765,7 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 1462132467}
   _employeePrefabs:
-  - {fileID: 2900756412535494345, guid: 1c08d06a300a3ae43a8a2eec3dbd921b, type: 3}
+  - {fileID: 8180164462200352850, guid: 1c08d06a300a3ae43a8a2eec3dbd921b, type: 3}
 --- !u!4 &650431969
 Transform:
   m_ObjectHideFlags: 0

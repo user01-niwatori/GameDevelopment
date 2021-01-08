@@ -32,6 +32,7 @@ public class OfficeNameUI : MonoBehaviour
         //    .Subscribe(_ => Debug.Log(_inputField.text))
         //    .AddTo(this);
 
+        GameInfo.Load();
         GameInfo.User.CreateCompany("うんこ");
         _messageText.text = "名前を入力してください。";
 

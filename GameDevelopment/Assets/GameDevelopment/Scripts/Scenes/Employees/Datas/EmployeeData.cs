@@ -41,11 +41,6 @@ namespace GameDevelopment.Scenes.Employees.Datas
         public string Name = string.Empty;
 
         /// <summary>
-        /// 体力
-        /// </summary>
-        public IntReactiveProperty HP = new IntReactiveProperty(0);
-
-        /// <summary>
         /// 制作時間
         /// </summary>
         /// <remarks>
@@ -55,6 +50,11 @@ namespace GameDevelopment.Scenes.Employees.Datas
         public int DevelopmentTime = 3;
 
         /// <summary>
+        /// 体力
+        /// </summary>
+        public IntReactiveProperty HP = new IntReactiveProperty(0);
+
+        /// <summary>
         /// 年棒
         /// </summary>
         public int YearStick = 0;
@@ -62,22 +62,22 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// <summary>
         /// プログラム
         /// </summary>
-        public int Program = 0;
+        public IntReactiveProperty Program = new IntReactiveProperty(0);
 
         /// <summary>
         /// グラフィック
         /// </summary>
-        public int Graphic = 0;
+        public IntReactiveProperty Graphic = new IntReactiveProperty(0);
 
         /// <summary>
         /// シナリオ
         /// </summary>
-        public int Scenario = 0;
+        public IntReactiveProperty Scenario = new IntReactiveProperty(0);
 
         /// <summary>
         /// サウンド
         /// </summary>
-        public int Sound = 0;
+        public IntReactiveProperty Sound = new IntReactiveProperty(0);
 
         /// <summary>
         /// 職業データ
