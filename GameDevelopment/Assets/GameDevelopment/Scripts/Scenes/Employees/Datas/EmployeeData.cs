@@ -2,13 +2,14 @@
 using UniRx;
 using System.Collections.Generic;
 using UnityEngine;
+using GameDevelopment.Common.Expansions;
 
 namespace GameDevelopment.Scenes.Employees.Datas
 {
     /// <summary>
     /// 状態
     /// </summary>
-    public enum EState
+    public enum EEmployeeState
     {
         None,         // 何もしない
         Work,         // 仕事
@@ -27,7 +28,7 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// <summary>
         /// 状態
         /// </summary>
-        public ReactiveProperty<EState> State = new ReactiveProperty<EState>();
+        public EmployeeStateReactiveProperty State = new EmployeeStateReactiveProperty(EEmployeeState.None);
 
         /// <summary>
         /// 社員ID
@@ -42,7 +43,7 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// <summary>
         /// 体力
         /// </summary>
-        public ReactiveProperty<int> HP = new ReactiveProperty<int>();
+        public IntReactiveProperty HP = new IntReactiveProperty(0);
 
         /// <summary>
         /// 制作時間

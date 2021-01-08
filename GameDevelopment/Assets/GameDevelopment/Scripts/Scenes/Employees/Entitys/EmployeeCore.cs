@@ -68,7 +68,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 transform.rotation = EmployeeLocationInfo.Rotation[_number];
             }
 
-            Data.State.Value = EState.Work;
+            Data.State.Value = EEmployeeState.Work;
             Data.HP.Value = UnityEngine.Random.Range(20, 100);
 
             // 指定秒数経ったら
@@ -76,22 +76,22 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             // HP -= 10
             Observable
                 .Interval(TimeSpan.FromSeconds(2f))
-                .Where(_ => Data.State.Value == EState.Work && Data.HP.Value > 0)
+                .Where(_ => Data.State.Value == EEmployeeState.Work && Data.HP.Value > 0)
                 .Subscribe(_ => Data.HP.Value -= 10)
                 .AddTo(this);
 
             // 仕事中にHPが0以下になったら
             // 家に帰る
             Data.HP
-                .Where(x => Data.State.Value == EState.Work && x <= 0)
-                .Subscribe(_ => Data.State.Value = EState.GoToHome)
+                .Where(x => Data.State.Value == EEmployeeState.Work && x <= 0)
+                .Subscribe(_ => Data.State.Value = EEmployeeState.GoToHome)
                 .AddTo(this);
 
             // 家で睡眠中にHPが満タンになったら
             // 仕事に行く
             Data.HP
-                .Where(x => Data.State.Value == EState.Sleep && x >= 50)
-                .Subscribe(_ => Data.State.Value = EState.GoToWork)
+                .Where(x => Data.State.Value == EEmployeeState.Sleep && x >= 50)
+                .Subscribe(_ => Data.State.Value = EEmployeeState.GoToWork)
                 .AddTo(this);
 
             // 状態を監視し、変化次第チェックする
@@ -103,15 +103,15 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// 状態を調べる
         /// </summary>
         /// <param name="state"></param>
-        private void CheckState(EState state)
+        private void CheckState(EEmployeeState state)
         {
             switch(state)
             {
-                case EState.Work:
+                case EEmployeeState.Work:
                     break;
-                case EState.Rest:
+                case EEmployeeState.Rest:
                     break;
-                case EState.Sleep:
+                case EEmployeeState.Sleep:
                     Sleep();
                     break;
             }

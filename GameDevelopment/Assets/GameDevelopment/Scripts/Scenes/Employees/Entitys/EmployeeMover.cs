@@ -103,26 +103,26 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// <summary>
         /// 移動タイプを設定
         /// </summary>
-        private void SetMoveType(EState state)
+        private void SetMoveType(EEmployeeState state)
         {
             switch(state)
             {
-                case EState.None:
-                case EState.Sleep:
+                case EEmployeeState.None:
+                case EEmployeeState.Sleep:
                     _moveType.Value = EMoveType.Idle;
                     break;
-                case EState.GoToHome:
+                case EEmployeeState.GoToHome:
                     Movement(_homePosition);
                     _moveType.Value = EMoveType.Move;
                     break;
-                case EState.GoToWork:
+                case EEmployeeState.GoToWork:
                     Movement(_defalutPosition);
                     _moveType.Value = EMoveType.Move;
                     break;
-                case EState.Work:
+                case EEmployeeState.Work:
                     _moveType.Value = EMoveType.Work;
                     break;
-                case EState.Rest:
+                case EEmployeeState.Rest:
                     _moveType.Value = EMoveType.Rest;
                     break;
             }
@@ -154,10 +154,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         {
             switch (_employeeCore.Data.State.Value)
             {
-                case EState.GoToWork:
+                case EEmployeeState.GoToWork:
                     CheckGoToWork();
                     break;
-                case EState.GoToHome:
+                case EEmployeeState.GoToHome:
                     CheckGoToHome();
                     break;
             }
@@ -173,7 +173,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 Stop();
-                _employeeCore.Data.State.Value = EState.Work;
+                _employeeCore.Data.State.Value = EEmployeeState.Work;
             }
         }
 
@@ -187,7 +187,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 Stop();
-                _employeeCore.Data.State.Value = EState.Sleep;
+                _employeeCore.Data.State.Value = EEmployeeState.Sleep;
             }
         }
 

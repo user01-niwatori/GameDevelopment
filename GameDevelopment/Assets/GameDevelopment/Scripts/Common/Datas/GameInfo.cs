@@ -25,6 +25,31 @@ namespace GameDevelopment.Common.Datas
         /// <summary>
         /// ユーザーデータ
         /// </summary>
-        public static UserData User = new UserData();
+        public static UserData User = default;
+
+        /// <summary>
+        /// ゲーム情報をセーブ
+        /// </summary>
+        public static void Save()
+        {
+            SaveData.SetClass(SaveKey.User, User);
+            SaveData.Save();
+        }
+
+        /// <summary>
+        /// ゲーム情報をロード
+        /// </summary>
+        public static void Load()
+        {
+            User = SaveData.GetClass(SaveKey.User, new UserData());
+        }
+
+        /// <summary>
+        /// ゲーム情報を削除
+        /// </summary>
+        public static void Clear()
+        {
+            SaveData.Clear();
+        }
     }
 }

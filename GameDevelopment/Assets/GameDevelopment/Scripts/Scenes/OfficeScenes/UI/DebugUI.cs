@@ -11,7 +11,9 @@ namespace GameDevelopment.Scenes.OfficeScenes.UI
     /// </summary>
     public class DebugUI : MonoBehaviour
     {
-
+        /// <summary>
+        /// 社員生成器
+        /// </summary>
         [SerializeField]
         private EmployeeGenerator _employeeGenerator = default;
 
@@ -33,21 +35,46 @@ namespace GameDevelopment.Scenes.OfficeScenes.UI
         [SerializeField]
         private Button _createEmployeeButton = default;
 
+        /// <summary>
+        /// セーブ削除ボタン
+        /// </summary>
+        [SerializeField]
+        private Button _clearButton = default;
+
+        /// <summary>
+        /// Start
+        /// </summary>
         private void Start()
         {
             // デバッグボタン押下時
-            _debugButton
+            // デバッグリスト表示
+            if(_debugButton)
+            {
+                _debugButton
                 .OnClickAsObservable()
                 .Subscribe(_ => _debugList.SetActive(!_debugList.activeSelf))
                 .AddTo(this);
+            }
 
             // 社員生成ボタン押下時
-            _createEmployeeButton
-                .OnClickAsObservable()
-                .Subscribe(_ => _employeeGenerator.Create())
-                .AddTo(this);
+            // 社員生成
+            if (_createEmployeeButton)
+            {
+                _createEmployeeButton
+                    .OnClickAsObservable()
+                    .Subscribe(_ => _employeeGenerator.Create())
+                    .AddTo(this);
+            }
 
-
+            // セーブ削除ボタン押下時
+            // セーブ削除
+            if(_clearButton)
+            {
+                _clearButton
+                    .OnClickAsObservable()
+                    .Subscribe(_ => SaveData.Clear())
+                    .AddTo(this);
+            }
         }
     }
 }

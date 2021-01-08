@@ -7,6 +7,17 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 
 /// <summary>
+/// データを保存するキー
+/// </summary>
+public class SaveKey
+{
+    /// <summary>
+    /// ユーザー情報
+    /// </summary>
+    public const string User = "User";
+}
+
+/// <summary>
 /// セーブデータ管理クラス
 /// </summary>
 public class SaveData : SingletonMonoBehaviour<SaveData>
@@ -240,6 +251,7 @@ public class SaveData : SingletonMonoBehaviour<SaveData>
     UnityEngine.Application.Quit();
 #endif
         Savedatabase.Clear();
+        Savedatabase.Save();
     }
 
     /// <summary>
@@ -372,7 +384,7 @@ public class SaveData : SingletonMonoBehaviour<SaveData>
             catch (Exception ex)
             {
                 // プロジェクトごとのエラー処理
-                GameObject msgBox = (GameObject)Instantiate((GameObject)Resources.Load(PathData.MessageBox));
+                GameObject msgBox = (GameObject)Instantiate((GameObject)Resources.Load("Prefabs/Casual/MessageBox"));
                 msgBox.GetComponent<MessageBox>().Initialize_Ok("セーブデータのロードに失敗しました。\n" + ex.Message + "\n" + ex.StackTrace, null);
             }
         }
@@ -397,7 +409,7 @@ public class SaveData : SingletonMonoBehaviour<SaveData>
             catch (Exception ex)
             {
                 // プロジェクトごとのエラー処理
-                GameObject msgBox = (GameObject)Instantiate((GameObject)Resources.Load(PathData.MessageBox));
+                GameObject msgBox = (GameObject)Instantiate((GameObject)Resources.Load("Prefabs/Casual/MessageBox"));
                 msgBox.GetComponent<MessageBox>().Initialize_Ok("セーブデータの保存に失敗しました。\n" + ex.Message + "\n" + ex.StackTrace, null);
             }
         }
