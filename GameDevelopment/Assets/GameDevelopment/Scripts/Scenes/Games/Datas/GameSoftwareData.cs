@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameDevelopment.Common.Datas;
+using UniRx;
 
 namespace GameDevelopment.Scenes.Games.Datas
 {
@@ -50,22 +51,22 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// プログラム
         /// </summary>
-        public int Program = 0;
+        public IntReactiveProperty Program = new IntReactiveProperty(0);
 
         /// <summary>
         /// グラフィック
         /// </summary>
-        public int Graphic = 0;
+        public IntReactiveProperty Graphic = new IntReactiveProperty(0);
 
         /// <summary>
         /// シナリオ
         /// </summary>
-        public int Scenario = 0;
+        public IntReactiveProperty Scenario = new IntReactiveProperty(0);
 
         /// <summary>
         /// サウンド
         /// </summary>
-        public int Sound = 0;
+        public IntReactiveProperty Sound = new IntReactiveProperty(0);
 
         /// <summary>
         /// ゲームソフトのジャンル

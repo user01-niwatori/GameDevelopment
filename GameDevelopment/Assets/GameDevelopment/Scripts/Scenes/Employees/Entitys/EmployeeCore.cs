@@ -78,7 +78,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             OnUpdate();
             CheckData();
 
-            Data.HP.Value       = UnityEngine.Random.Range(10, 50);
+            Data.HP.Value       = UnityEngine.Random.Range(1, 11);
             Data.Program.Value  = UnityEngine.Random.Range(10, 50);
             Data.Graphic.Value  = UnityEngine.Random.Range(10, 50);
             Data.Scenario.Value = UnityEngine.Random.Range(10, 50);
@@ -91,26 +91,14 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void OnUpdate()
         {
-            // 指定秒数経ったら
-            // 仕事中で体力があるなら
+            // 指定秒数経ったら...
+            // 仕事中で体力があるなら...
             // HP -= 引く値
             Observable
                 .Interval(TimeSpan.FromSeconds(Data.DevelopmentTime))
                 .Where(_ => Data.State.Value == EEmployeeState.Work && Data.HP.Value > 0)
                 .Subscribe(_ => Data.HP.Value -= SubtractHP)
                 .AddTo(this);
-
-            //Observable
-            //    .Interval(TimeSpan.FromSeconds(5f))
-            //    .Subscribe(_ =>
-            //    {
-            //        Data.HP.Value += 1;
-            //        Data.Scenario.Value += 2;
-            //        Data.Graphic.Value += 3;
-            //        Data.Sound.Value += 4;
-            //        Data.Program.Value += 5;
-            //    })
-            //    .AddTo(this);
         }
 
         /// <summary>
@@ -118,20 +106,20 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void CheckData()
         {
-            // 現在のHPがHPの最大値を上回ったら
+            // 現在のHPがHPの最大値を上回ったら...
             // 現在のHPをHPの最大値として設定する。
             Data.HP
                 .Where(x => x > _maxHP)
                 .Subscribe(x => _maxHP = x);
 
-            // 仕事中にHPが0以下になったら
+            // 仕事中にHPが0以下になったら...
             // 家に帰る。
             Data.HP
                 .Where(x => Data.State.Value == EEmployeeState.Work && x <= 0)
                 .Subscribe(_ => Data.State.Value = EEmployeeState.GoToHome)
                 .AddTo(this);
 
-            // 家で睡眠中にHPが満タンになったら
+            // 家で睡眠中にHPが満タンになったら...
             // 仕事に行く。
             Data.HP
                 .Where(x => Data.State.Value == EEmployeeState.Sleep && x >= _maxHP)
@@ -189,7 +177,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 .Timer(TimeSpan.FromSeconds(10f))
                 .Subscribe(_ =>
                 {
-                    Data.HP.Value = 50;
+                    Data.HP.Value = _maxHP;
                 });
         }
 
