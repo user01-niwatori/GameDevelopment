@@ -1,15 +1,14 @@
 ﻿using UniRx;
 using UnityEngine.UI;
 using UnityEngine;
-using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Generators;
 
-namespace GameDevelopment.Scenes.OfficeScenes.UI
+namespace GameDevelopment.Scenes.CompanyScenes.UI
 {
     /// <summary>
     /// デバッグ周りのUI
     /// </summary>
-    public class DebugUI : MonoBehaviour
+    public class DebugUI : NewBehaviour
     {
         /// <summary>
         /// 社員生成器

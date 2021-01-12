@@ -7,7 +7,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// <summary>
     /// 社員の情報を視覚的に表示
     /// </summary>
-    public class EmployeeView : MonoBehaviour
+    public class EmployeeView : NewBehaviour
     {
         /// <summary>
         /// 社員のコア部分

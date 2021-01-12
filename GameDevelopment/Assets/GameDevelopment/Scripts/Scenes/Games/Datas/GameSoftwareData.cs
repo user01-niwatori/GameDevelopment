@@ -5,15 +5,30 @@ using UniRx;
 
 namespace GameDevelopment.Scenes.Games.Datas
 {
+    /*
+        ハード選択時はGameHardTableから参照 
+    */
+
+    /// <summary>
+    /// ソフト開発期間
+    /// </summary>
+    public enum EDevSoftPeriodType
+    { 
+        Shot,           // 3カ月
+        Usually,        // 6カ月
+        Long,           // 1年
+    };
+
     /// <summary>
     /// ゲームソフトのジャンル
     /// </summary>
-    public enum EGameSoftCategory
+    public enum EGameSoftGenre
     {
         None,
         Action,
         Shooting,
         RPG,
+        Max,
     };
 
     /// <summary>
@@ -25,6 +40,7 @@ namespace GameDevelopment.Scenes.Games.Datas
         Movie,
         Animation,
         Fantasy,
+        Max,
     };
 
     /// <summary>
@@ -39,6 +55,11 @@ namespace GameDevelopment.Scenes.Games.Datas
         public string Name = string.Empty;
 
         /// <summary>
+        /// 会社名
+        /// </summary>
+        public string CompanyName = string.Empty;
+
+        /// <summary>
         /// 値段
         /// </summary>
         public int Price = 0;
@@ -47,6 +68,11 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// ランク
         /// </summary>
         public int Rank = 0;
+
+        /// <summary>
+        /// 完成度のパーセント
+        /// </summary>
+        public IntReactiveProperty CompletionPer = new IntReactiveProperty(0);
 
         /// <summary>
         /// プログラム
@@ -71,7 +97,7 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// ゲームソフトのジャンル
         /// </summary>
-        public EGameSoftCategory Category = EGameSoftCategory.None;
+        public EGameSoftGenre Category = EGameSoftGenre.None;
 
         /// <summary>
         /// ゲームソフトの内容
@@ -79,14 +105,19 @@ namespace GameDevelopment.Scenes.Games.Datas
         public EGameSoftContents Contents = EGameSoftContents.None;
 
         /// <summary>
+        /// ゲームソフト開発期間のタイプ
+        /// </summary>
+        public EDevSoftPeriodType DevPeriod = EDevSoftPeriodType.Shot;
+
+        /// <summary>
         /// 開発開始日
         /// </summary>
-        public Date DevelopmentStartDate = new Date();
+        public Date DevelopmentStartDate = default;
 
         /// <summary>
         /// 発売日
         /// </summary>
-        public Date ReleaseDate = new Date();
+        public Date ReleaseDate = default;
 
         /// <summary>
         /// 週間売上
@@ -96,7 +127,7 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// レビュー
         /// </summary>
-        public GameReviewData Review = new GameReviewData();
+        public GameReviewData Review = default;
 
         /// <summary>
         /// 売上

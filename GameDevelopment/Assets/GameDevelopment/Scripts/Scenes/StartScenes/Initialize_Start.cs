@@ -6,7 +6,7 @@ namespace GameDevelopment.Scenes.StartScenes
     /// <summary>
     /// 初期化　開始時に読み込まれるシーン
     /// </summary>
-    public class Initialize_Start : MonoBehaviour
+    public class Initialize_Start : NewBehaviour
     {
         /// <summary>
         /// Start

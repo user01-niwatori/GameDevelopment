@@ -14,7 +14,7 @@ public enum SceneName
     Logo,               // ロゴの表示シーン
     DataCheck,          // データチェック用シーン
     Title,              // タイトルシーン
-    Office,
+    Company,            // 会社シーン
 }
 
 /// <summary>

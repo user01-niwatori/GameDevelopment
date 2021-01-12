@@ -8,7 +8,7 @@ namespace GameDevelopment.Scenes.Employees.Generators
     /// <summary>
     /// 社員を生成するクラス
     /// </summary>
-    public class EmployeeGenerator : MonoBehaviour
+    public class EmployeeGenerator : NewBehaviour
     {
         /// <summary>
         /// 生成先の親オブジェクト

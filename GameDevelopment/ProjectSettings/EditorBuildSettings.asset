@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/GameDevelopment/Scenes/03_Title.unity
     guid: 1b20115ced171af4d868b23a77f56bcb
   - enabled: 1
-    path: Assets/GameDevelopment/Scenes/04_Office.unity
+    path: Assets/GameDevelopment/Scenes/04_Company.unity
     guid: f995e80907720ed44af5797cf8da7bc9
   - enabled: 1
     path: Assets/GameDevelopment/Scenes/Test.unity

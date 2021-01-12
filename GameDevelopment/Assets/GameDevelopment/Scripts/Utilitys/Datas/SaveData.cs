@@ -15,6 +15,11 @@ public class SaveKey
     /// ユーザー情報
     /// </summary>
     public const string User = "User";
+
+    /// <summary>
+    /// ゲーム業界の情報
+    /// </summary>
+    public const string Industry = "Industry";
 }
 
 /// <summary>

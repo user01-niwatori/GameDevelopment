@@ -8,7 +8,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// </summary>
     [RequireComponent(typeof(EmployeeCore))]
     [RequireComponent(typeof(EventTrigger))]
-    public class EmployeeCollision : MonoBehaviour
+    public class EmployeeCollision : NewBehaviour
     {
         /// <summary>
         /// 社員情報表示用クラス

@@ -14,7 +14,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// このスクリプトを経由して社員クラス同士のやり取りを行う
     /// </remarks>
     [RequireComponent(typeof(EmployeeMover))]
-    public class EmployeeCore : MonoBehaviour
+    public class EmployeeCore : NewBehaviour
     {
         /// <summary>
         /// HPを引く値

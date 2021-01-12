@@ -6,7 +6,7 @@ namespace GameDevelopment.Scenes.DataCheckScenes
     /// <summary>
     /// 初期化　データチェック
     /// </summary>
-    public class Initialize_DataCheck : MonoBehaviour
+    public class Initialize_DataCheck : NewBehaviour
     {
         private async void Start()
         {

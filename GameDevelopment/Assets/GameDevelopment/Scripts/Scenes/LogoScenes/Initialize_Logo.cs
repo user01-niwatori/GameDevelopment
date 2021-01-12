@@ -6,7 +6,7 @@ namespace GameDevelopment.Scenes.LogoScenes
     /// <summary>
     /// 初期化　ロゴ表示
     /// </summary>
-    public class Initialize_Logo : MonoBehaviour
+    public class Initialize_Logo : NewBehaviour
     {
         /// <summary>
         /// Start

@@ -20,7 +20,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// </summary>
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(EmployeeMover))]
-    public class EmployeeAnimator : MonoBehaviour
+    public class EmployeeAnimator : NewBehaviour
     {
         /// <summary>
         /// Animator

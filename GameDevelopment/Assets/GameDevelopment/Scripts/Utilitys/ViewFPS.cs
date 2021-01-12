@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ViewFPS : MonoBehaviour
+public class ViewFPS : NewBehaviour
 {
     [SerializeField]
     private Text _fpsText = default;

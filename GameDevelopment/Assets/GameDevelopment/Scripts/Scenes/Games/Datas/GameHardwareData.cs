@@ -22,14 +22,24 @@ namespace GameDevelopment.Scenes.Games.Datas
     public class GameHardwareData
     {
         /// <summary>
+        /// 名前
+        /// </summary>
+        public string Name = default;
+
+        /// <summary>
+        /// 会社名
+        /// </summary>
+        public string CompanyName = string.Empty;
+
+        /// <summary>
         /// 開発開始日
         /// </summary>
-        public Date DevelopmentStartDate = new Date();
+        public Date DevelopmentStartDate = default;
 
         /// <summary>
         /// 発売日
         /// </summary>
-        public Date ReleaseDate = new Date();
+        public Date ReleaseDate = default;
 
         /// <summary>
         /// 値段

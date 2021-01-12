@@ -16,7 +16,7 @@ public enum MessageType
 /// <summary>
 /// メッセージボックスクラス
 /// </summary>
-public class MessageBox : MonoBehaviour
+public class MessageBox : NewBehaviour
 {
     [SerializeField]
     private Button _yesButton = default;

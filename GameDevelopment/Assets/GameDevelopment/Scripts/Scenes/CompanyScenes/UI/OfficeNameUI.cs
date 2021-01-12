@@ -3,7 +3,7 @@ using GameDevelopment.Common.Datas;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OfficeNameUI : MonoBehaviour
+public class OfficeNameUI : NewBehaviour
 {
     /// <summary>
     /// メッセージテキスト
@@ -84,7 +84,7 @@ public class OfficeNameUI : MonoBehaviour
             GameInfo.User.Company.CurrentOffice.CreateEmployees(0);
         }
 
-        SceneFadeManager.Instance.Transition(SceneName.Office);
+        SceneFadeManager.Instance.Transition(SceneName.Company);
         Destroy(this.gameObject);
     }
 }

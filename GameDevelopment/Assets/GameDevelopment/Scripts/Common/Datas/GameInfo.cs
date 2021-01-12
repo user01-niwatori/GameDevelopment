@@ -28,10 +28,16 @@ namespace GameDevelopment.Common.Datas
         public static UserData User = default;
 
         /// <summary>
+        /// ゲーム業界のデータ
+        /// </summary>
+        public static GameIndustryData Industry = default;
+
+        /// <summary>
         /// ゲーム情報をセーブ
         /// </summary>
         public static void Save()
         {
+            SaveData.SetClass(SaveKey.Industry, Industry);
             SaveData.SetClass(SaveKey.User, User);
             SaveData.Save();
         }
@@ -41,7 +47,8 @@ namespace GameDevelopment.Common.Datas
         /// </summary>
         public static void Load()
         {
-            User = SaveData.GetClass(SaveKey.User, new UserData());
+            User     = SaveData.GetClass(SaveKey.User, new UserData());
+            Industry = SaveData.GetClass(SaveKey.Industry, new GameIndustryData());
         }
 
         /// <summary>

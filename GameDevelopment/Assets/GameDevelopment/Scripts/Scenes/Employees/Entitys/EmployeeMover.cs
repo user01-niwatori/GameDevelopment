@@ -42,7 +42,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(EmployeeCore))]
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EmployeeMover : MonoBehaviour
+    public class EmployeeMover : NewBehaviour
     {
         /// <summary>
         /// デフォルトの位置
