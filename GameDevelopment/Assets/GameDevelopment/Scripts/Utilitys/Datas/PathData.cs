@@ -19,11 +19,17 @@ public class PathData
     /// ゲームソフト開発中
     /// ゲームハード選択画面で表示されるハード達
     /// </summary>
-    public const string SelectGameHard = "";
+    public const string SelectGameHard = "Prefabs/HouseDevUI/GameHardInfoUI";
 
     /// <summary>
     /// ゲームソフト開発中
     /// ゲームジャンル選択画面で表示されるジャンル
     /// </summary>
-    public const string SelectGameGenre = "";
+    public const string SelectGameGenre = "Prefabs/HouseDevUI/GenreButton";
+
+    /// <summary>
+    /// ゲームソフト開発中
+    /// ゲームジャンル選択画面で表示されるジャンル
+    /// </summary>
+    public const string SelectGameContents = "Prefabs/HouseDevUI";
 }

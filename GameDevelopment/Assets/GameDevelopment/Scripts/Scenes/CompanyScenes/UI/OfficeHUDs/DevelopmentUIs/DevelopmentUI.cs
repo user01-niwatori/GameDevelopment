@@ -34,8 +34,8 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs
         /// </summary>
         public void DisplaySelectDevButtonList()
         {
+            Hide();
             _selectDevButtonList.SetEnabled(true);
-            _gameSoftDevUI.SetEnabled(false);
         }
 
         /// <summary>
@@ -43,8 +43,26 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs
         /// </summary>
         public void DisplayGameSoftDevUI()
         {
-            _selectDevButtonList.SetEnabled(false);
+            Hide();
             _gameSoftDevUI.SetEnabled(true);
+        }
+
+        /// <summary>
+        /// 子オブジェクトのUIを非表示にする
+        /// </summary>
+        private void Hide()
+        {
+            _selectDevButtonList.SetEnabled(false);
+            _gameSoftDevUI.SetEnabled(false);
+        }
+
+        /// <summary>
+        /// オブジェクトを非表示にする
+        /// </summary>
+        public void Close()
+        {
+            Hide();
+            this.gameObject.SetActive(false);
         }
     }
 }

@@ -48,7 +48,15 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs
             // ソフト開発UIを表示
             _gameSoftDevButton
                 .OnClickAsObservable()
-                .Subscribe(_ =>　_developmentUI.DisplayGameSoftDevUI());
+                .Subscribe(_ => _developmentUI.DisplayGameSoftDevUI())
+                .AddTo(this);
+
+            // 閉じるボタン押下時
+            // UIを非表示にする。
+            _closeButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _developmentUI.Close())
+                .AddTo(this);
         }
     }
 }

@@ -153,11 +153,6 @@ namespace GameDevelopment.Scenes.Companys.Datas
 
         #region ゲームソフト
 
-        public void GameSoftDevelopment()
-        {
-            
-        }
-
         /// <summary>
         /// ゲームソフトの数
         /// </summary>

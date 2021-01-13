@@ -13,4 +13,15 @@ namespace GameDevelopment.Common.Expansions
         public EmployeeStateReactiveProperty() { }
         public EmployeeStateReactiveProperty(EEmployeeState initialValue) : base(initialValue) { }
     }
+
+    /// <summary>
+    /// EEmployeeTaskのReactiveProperty版
+    /// </summary>
+    [Serializable]
+    public class EmployeeTaskReactiveProperty : ReactiveProperty<EEmployeeTask>
+    {
+        public EmployeeTaskReactiveProperty() { }
+        public EmployeeTaskReactiveProperty(EEmployeeTask initialValue) : base(initialValue) { }
+    }
+
 }

@@ -34,8 +34,8 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
         /// </summary>
         public void DispalyDevInfoButtonList()
         {
+            Hide();
             _devInfoButtonList.SetEnabled(true);
-            _developmentUI.SetEnabled(false);
         }
 
         /// <summary>
@@ -43,8 +43,16 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
         /// </summary>
         public void DisplayDevelopmentUI()
         {
-            //_devInfoButtonList.SetEnabled(false);
+            Hide();
             _developmentUI.SetEnabled(true);
+        }
+
+        /// <summary>
+        /// 非表示
+        /// </summary>
+        private void Hide()
+        {
+            _developmentUI.SetEnabled(false);
         }
     }
 }

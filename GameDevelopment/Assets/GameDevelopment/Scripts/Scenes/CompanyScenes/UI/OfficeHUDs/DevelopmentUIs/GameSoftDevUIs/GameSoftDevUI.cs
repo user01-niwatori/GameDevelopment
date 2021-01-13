@@ -9,6 +9,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     public class GameSoftDevUI : NewBehaviour
     {
         /// <summary>
+        /// 開発中のソフト/ハードに関するUI
+        /// </summary>
+        [SerializeField]
+        private DevelopmentUI _developmentUI = default;
+
+        /// <summary>
         /// ゲームソフトボタンリスト
         /// </summary>
         [SerializeField]
@@ -33,8 +39,8 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         public void DisplaySoftDevButtonList()
         {
+            Hide();
             _softDevButtonList.SetEnabled(true);
-            _houseDevUI.SetEnabled(false);
         }
 
         /// <summary>
@@ -42,8 +48,27 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         public void DisplayHouseDevUI()
         {
-            _softDevButtonList.SetEnabled(false);
+            Hide();
             _houseDevUI.SetEnabled(true);
+        }
+
+        /// <summary>
+        /// 子オブジェクトのUIを非表示にする
+        /// </summary>
+        private void Hide()
+        {
+            _softDevButtonList.SetEnabled(false);
+            _houseDevUI.SetEnabled(false);
+        }
+
+        /// <summary>
+        /// オブジェクトを非表示にする
+        /// </summary>
+        public void Close()
+        {
+            Hide();
+            this.gameObject.SetActive(false);
+            _developmentUI.Close();
         }
     }
 }

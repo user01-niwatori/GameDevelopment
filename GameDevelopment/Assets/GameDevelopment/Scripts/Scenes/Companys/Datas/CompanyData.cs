@@ -11,6 +11,7 @@ namespace GameDevelopment.Scenes.Companys.Datas
      * ファン層（評価、人気度）
      * 売上（年ごと）
     */
+
     /// <summary>
     /// 会社データ
     /// </summary>
@@ -20,7 +21,7 @@ namespace GameDevelopment.Scenes.Companys.Datas
         /// <summary>
         /// 名前
         /// </summary>
-        public string Name = "unnko";
+        public string Name = string.Empty;
 
         /// <summary>
         /// オフィス

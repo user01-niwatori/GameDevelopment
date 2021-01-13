@@ -25,9 +25,22 @@ namespace GameDevelopment.Scenes.Games.Datas
     public enum EGameSoftGenre
     {
         None,
+
         Action,
+        BeltAction,
+        HuntingAction,
+        Fighting,
+        Music,
+        Racing,
+        LD,
+
         Shooting,
         RPG,
+        Strategy,
+        Adventure,
+        BeautifulGirl,
+        Puzzle,
+
         Max,
     };
 
@@ -97,7 +110,7 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// ゲームソフトのジャンル
         /// </summary>
-        public EGameSoftGenre Category = EGameSoftGenre.None;
+        public EGameSoftGenre Genre = EGameSoftGenre.None;
 
         /// <summary>
         /// ゲームソフトの内容
@@ -128,6 +141,11 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// レビュー
         /// </summary>
         public GameReviewData Review = default;
+
+        /// <summary>
+        /// ゲームハード
+        /// </summary>
+        public GameHardwareData Hard = default;
 
         /// <summary>
         /// 売上

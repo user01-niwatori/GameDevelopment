@@ -126,15 +126,21 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 .Subscribe(_ => Data.State.Value = EEmployeeState.GoToWork)
                 .AddTo(this);
 
-            // 状態を監視し、変化次第チェックする。
+            // 状態を監視
             Data.State
-                .Subscribe(x => CheckState(x));
+                .Subscribe(x => CheckState(x))
+                .AddTo(this);
+
+            // 仕事内容を監視
+            Data.Task
+                .Subscribe(x => CheckTask(x))
+                .AddTo(this);
         }
 
         /// <summary>
         /// 状態を調べる
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state">状態</param>
         private void CheckState(EEmployeeState state)
         {
             switch(state)
@@ -148,7 +154,26 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                     break;
             }
 
-            Debug.Log($"state:{state}");
+            //Debug.Log($"state:{state}");
+        }
+
+        /// <summary>
+        /// 仕事の内容を調べる
+        /// </summary>
+        /// <param name="task">仕事</param>
+        private void CheckTask(EEmployeeTask task)
+        {
+            switch (task)
+            {
+                case EEmployeeTask.None:
+                    break;
+                case EEmployeeTask.GameHard:
+                    Data.State.Value = EEmployeeState.Work;
+                    break;
+                case EEmployeeTask.GameSoft:
+                    Data.State.Value = EEmployeeState.Work;
+                    break;
+            }
         }
 
         /// <summary>

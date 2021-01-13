@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
 {
@@ -8,6 +9,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// </summary>
     public class CreateGameSoftUI : NewBehaviour
     {
+        /// <summary>
+        /// 自社開発UI
+        /// </summary>
+        [SerializeField]
+        private HouseDevUI _houseDevUI = default;
+
         /// <summary>
         /// ゲームハードを選ぶボタン
         /// </summary>
@@ -55,6 +62,68 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         [SerializeField]
         private Button _okButton = default;
+
+        /// <summary>
+        /// Start
+        /// </summary>
+        private void Start()
+        {
+            // ハード選択ボタン押下時
+            // ハード選択UI表示
+            _selectHardButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _houseDevUI.DisplaySelectGameHardUI())
+                .AddTo(this);
+
+            // 内容選択ボタン押下時
+            // 内容選択UI表示
+            _selectContentsButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _houseDevUI.DisplaySelectGameContentsUI())
+                .AddTo(this);
+
+            // ジャンル選択ボタン押下時
+            // ジャンル選択UI表示
+            _selectGenereButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _houseDevUI.DisplaySelectGameGenreUI())
+                .AddTo(this);
+
+            // 閉じるボタン押下時
+            // UIを非表示にする。
+            _closeButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _houseDevUI.Close())
+                .AddTo(this);
+
+        }
+
+        /// <summary>
+        /// ゲームオブジェクト表示時
+        /// </summary>
+        private void OnEnable()
+        {
+            // 選択されたハードを表示する
+            // 選択されていなければNoneを表示する
+            if(_houseDevUI.GameSoft.Hard != null)
+            {
+                var hardText = _selectHardButton.transform.Find("Text").GetComponent<Text>(); 
+                hardText.text     = _houseDevUI.GameSoft.Hard.Name;
+            }
+            else
+            {
+                var hardText = _selectHardButton.transform.Find("Text").GetComponent<Text>();
+                hardText.text = "None";
+            }
+
+            // 選択されたジャンルを表示
+            var genreText  = _selectGenereButton.transform.Find("Text").GetComponent<Text>();
+            genreText.text = _houseDevUI.GameSoft.Genre.ToString();
+
+            // 選択された内容を表示
+            var contentsText = _selectContentsButton.transform.Find("Text").GetComponent<Text>();
+            contentsText.text = _houseDevUI.GameSoft.Contents.ToString();
+        }
 
     }
 }

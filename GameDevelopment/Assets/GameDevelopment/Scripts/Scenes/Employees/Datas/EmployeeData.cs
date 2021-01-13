@@ -17,7 +17,17 @@ namespace GameDevelopment.Scenes.Employees.Datas
         GoToWork,     // 出社する
         GoToHome,     // 家に帰る
         Sleep,        // 寝る
-    }
+    };
+
+    /// <summary>
+    /// 仕事
+    /// </summary>
+    public enum EEmployeeTask
+    {
+        None,           // 何も無し
+        GameSoft,       // ゲームソフト開発 
+        GameHard,       // ゲームハード開発
+    };
 
     /// <summary>
     /// 社員データ
@@ -29,6 +39,11 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// 状態
         /// </summary>
         public EmployeeStateReactiveProperty State = new EmployeeStateReactiveProperty(EEmployeeState.None);
+
+        /// <summary>
+        /// 仕事内容
+        /// </summary>
+        public EmployeeTaskReactiveProperty Task = new EmployeeTaskReactiveProperty(EEmployeeTask.None);
 
         /// <summary>
         /// 社員ID

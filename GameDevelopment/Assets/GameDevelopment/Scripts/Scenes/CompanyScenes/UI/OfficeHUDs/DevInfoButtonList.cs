@@ -54,7 +54,8 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
             // 開発中のソフト/ハードに関するUIを表示
             _developmentButton
                 .OnClickAsObservable()
-                .Subscribe(_ => _officeHUD.DisplayDevelopmentUI());
+                .Subscribe(_ => _officeHUD.DisplayDevelopmentUI())
+                .AddTo(this);
         }
     }
 

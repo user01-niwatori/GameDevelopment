@@ -14,7 +14,10 @@ namespace GameDevelopment.Common.Datas
         /// </summary>
         public CompanyData Company = default;
 
-        public RockData Rock = default;
+        /// <summary>
+        /// ロックされているデータ
+        /// </summary>
+        public RockData Rock = new RockData();
 
         /// <summary>
         /// 会社を生成
