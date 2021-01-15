@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Scenes.Games.Datas.Genres;
 using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Employees.Generators;
 using GameDevelopment.Common.Datas;
@@ -29,7 +30,7 @@ namespace GameDevelopment.Scenes.Companys.Entitys
             // ハードウェアを開放
             for(int i = 0; i < 3; i++)
             {
-                var hardware = new Games.Datas.GameHardwareData();
+                var hardware = new GameHardwareData();
                 hardware.Name = "Hard_" + i;
                 GameInfo.Industry.Hards.Add(hardware);
             }
@@ -37,7 +38,7 @@ namespace GameDevelopment.Scenes.Companys.Entitys
             // ゲームジャンル開放
             for(int i = 1; i < 10; i++)
             {
-                GameInfo.User.Rock.GameSoftGenres.Add((EGameSoftGenre)i);
+                GameInfo.User.Rock.GameSoftGenres.Add(new GameSoftGenreData((EGameSoftGenreName)i));
             }
 
             // 社員生成

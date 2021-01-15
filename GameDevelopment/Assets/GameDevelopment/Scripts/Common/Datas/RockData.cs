@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Scenes.Games.Datas.Genres;
 
 namespace GameDevelopment.Common.Datas
 {
@@ -13,12 +13,12 @@ namespace GameDevelopment.Common.Datas
         /// <summary>
         /// ゲームソフトのジャンル
         /// </summary>
-        public List<EGameSoftGenre> GameSoftGenres = new List<EGameSoftGenre>();
+        public List<GameSoftGenreData> GameSoftGenres = new List<GameSoftGenreData>();
 
         /// <summary>
         /// ゲームソフトの内容
         /// </summary>
-        public List<EGameSoftContents> GameSoftContents = new List<EGameSoftContents>();
+        public List<GameSoftContentData> GameSoftContents = new List<GameSoftContentData>();
 
     }
 }

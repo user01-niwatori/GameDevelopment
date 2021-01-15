@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using GameDevelopment.Common.Datas;
-using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Scenes.Games.Datas.Genres;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
 {
@@ -20,7 +20,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <summary>
         /// 移動に掛かる時間
         /// </summary>
-        private const float MoveTime = 0.35f;
+        private const float MoveTime = 0.3f;
 
         /// <summary>
         /// 自社開発UI
@@ -125,7 +125,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <summary>
         /// ボタン押下時、ジャンルを選択
         /// </summary>
-        private void OnClick_SelectGenre(EGameSoftGenre genre)
+        private void OnClick_SelectGenre(GameSoftGenreData genre)
         {
             _houseDevUI.GameSoft.Genre = genre;
             _houseDevUI.DisplayCreateGameSoftUI();

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Scenes.Games.Datas.Genres;
 using UnityEngine.Events;
 using UniRx;
 
@@ -26,9 +26,9 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// 初期化
         /// </summary>
         /// <param name="name">名前</param>
-        public void Initialized(EGameSoftGenre genre, UnityAction callback)
+        public void Initialized(GameSoftGenreData genre, UnityAction callback)
         {
-            _nameText.text = genre.ToString();
+            _nameText.text = genre.Name.ToString();
 
             // ボタン押下時
             // コールバック実行

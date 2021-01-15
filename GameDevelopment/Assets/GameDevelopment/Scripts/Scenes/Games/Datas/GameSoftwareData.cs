@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameDevelopment.Common.Datas;
 using UniRx;
+using GameDevelopment.Scenes.Games.Datas.Genres;
 
 namespace GameDevelopment.Scenes.Games.Datas
 {
@@ -17,43 +18,6 @@ namespace GameDevelopment.Scenes.Games.Datas
         Shot,           // 3カ月
         Usually,        // 6カ月
         Long,           // 1年
-    };
-
-    /// <summary>
-    /// ゲームソフトのジャンル
-    /// </summary>
-    public enum EGameSoftGenre
-    {
-        None,
-
-        Action,
-        BeltAction,
-        HuntingAction,
-        Fighting,
-        Music,
-        Racing,
-        LD,
-
-        Shooting,
-        RPG,
-        Strategy,
-        Adventure,
-        BeautifulGirl,
-        Puzzle,
-
-        Max,
-    };
-
-    /// <summary>
-    /// ゲームソフトの内容
-    /// </summary>
-    public enum EGameSoftContents
-    {
-        None,
-        Movie,
-        Animation,
-        Fantasy,
-        Max,
     };
 
     /// <summary>
@@ -110,12 +74,12 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// ゲームソフトのジャンル
         /// </summary>
-        public EGameSoftGenre Genre = EGameSoftGenre.None;
+        public GameSoftGenreData Genre = new GameSoftGenreData();
 
         /// <summary>
         /// ゲームソフトの内容
         /// </summary>
-        public EGameSoftContents Contents = EGameSoftContents.None;
+        public GameSoftContentData Content = new GameSoftContentData();
 
         /// <summary>
         /// ゲームソフト開発期間のタイプ

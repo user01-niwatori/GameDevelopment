@@ -118,11 +118,11 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
 
             // 選択されたジャンルを表示
             var genreText  = _selectGenereButton.transform.Find("Text").GetComponent<Text>();
-            genreText.text = _houseDevUI.GameSoft.Genre.ToString();
+            genreText.text = _houseDevUI.GameSoft.Genre.Name.ToString();
 
             // 選択された内容を表示
             var contentsText = _selectContentsButton.transform.Find("Text").GetComponent<Text>();
-            contentsText.text = _houseDevUI.GameSoft.Contents.ToString();
+            contentsText.text = _houseDevUI.GameSoft.Content.Name.ToString();
         }
 
     }
