@@ -55,7 +55,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <summary>
         /// ゲームジャンルのボタンリスト
         /// </summary>
-        private List<GenreButton> _gameGenreList = new List<GenreButton>();
+        private List<GameGenreInfoUI> _gameGenreList = new List<GameGenreInfoUI>();
 
         /// <summary>
         /// ゲームオブジェクト表示時
@@ -92,12 +92,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 // 選択肢生成
                 // リストに格納
                 var prefab      = Instantiate(Resources.Load($"{PathData.SelectGameGenre}"), _content.transform) as GameObject;
-                var genreButton = prefab.GetComponent<GenreButton>();
-                _gameGenreList.Add(genreButton);
+                var genreInfoUI = prefab.GetComponent<GameGenreInfoUI>();
+                _gameGenreList.Add(genreInfoUI);
 
                 // ジャンルボタン初期化
                 // OnClick_SelectGenre()をコールバックとして渡している
-                genreButton.Initialized(genre, () => OnClick_SelectGenre(genre));
+                genreInfoUI.Initialized(genre, () => OnClick_SelectGenre(genre));
             }
         }
 

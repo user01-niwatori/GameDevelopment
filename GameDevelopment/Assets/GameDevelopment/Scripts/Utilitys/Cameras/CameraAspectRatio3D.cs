@@ -7,7 +7,7 @@
 
 
 /// <summary>
-/// カメラの複数アスペクト比対応（2D）
+/// カメラの複数アスペクト比対応（3D）
 /// </summary>
 public class CameraAspectRatio3D : MonoBehaviour
 {

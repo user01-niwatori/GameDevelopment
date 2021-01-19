@@ -25,7 +25,7 @@ public class PathData
     /// ゲームソフト開発中
     /// ゲームジャンル選択画面で表示されるジャンル
     /// </summary>
-    public const string SelectGameGenre = "Prefabs/HouseDevUI/GenreButton";
+    public const string SelectGameGenre = "Prefabs/HouseDevUI/GameGenreInfoUI";
 
     /// <summary>
     /// ゲームソフト開発中

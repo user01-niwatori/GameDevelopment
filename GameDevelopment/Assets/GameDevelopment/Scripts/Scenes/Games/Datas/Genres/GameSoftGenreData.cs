@@ -46,7 +46,6 @@ namespace GameDevelopment.Scenes.Games.Datas.Genres
     [Serializable]
     public class GameSoftGenreData
     {
-
         /// <summary>
         /// 値段
         /// </summary>
