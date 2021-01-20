@@ -1,6 +1,7 @@
 ﻿using System;
 using UniRx;
 using UnityEngine;
+using GameDevelopment.Common.Expansions;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
 
@@ -34,16 +35,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private int _maxHP = 0;
 
-        ///// <summary>
-        ///// 状態
-        ///// </summary>
-        //private ReactiveProperty<EState> _state =  new ReactiveProperty<EState>();
-        //public  IReadOnlyReactiveProperty<EState> State => _state;
-
         /// <summary>
         /// データ
         /// </summary>
-        public EmployeeData Data 
+        private EmployeeData Data 
         {
             get
             {
@@ -54,7 +49,50 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 GameInfo.User.Company.Offices[GameInfo.CurrentOffice].Employees[_number] = value;
             }
         }
-        
+
+        #region getter/setter
+
+        /// <summary>
+        /// HP
+        /// </summary>
+        public IReadOnlyReactiveProperty<int> HP => Data.HP;
+
+        /// <summary>
+        /// プログラム
+        /// </summary>
+        public IReadOnlyReactiveProperty<int> Program => Data.Param.Program;
+
+        /// <summary>
+        /// グラフィック
+        /// </summary>
+        public IReadOnlyReactiveProperty<int> Graphic => Data.Param.Graphic;
+
+        /// <summary>
+        /// シナリオ
+        /// </summary>
+        public IReadOnlyReactiveProperty<int> Scenario => Data.Param.Scenario;
+
+        /// <summary>
+        /// サウンド
+        /// </summary>
+        public IReadOnlyReactiveProperty<int> Sound => Data.Param.Sound;
+
+        /// <summary>
+        /// 状態
+        /// </summary>
+        public IReadOnlyReactiveProperty<EEmployeeState> State => Data.State;
+
+        /// <summary>
+        /// 状態を設定
+        /// </summary>
+        /// <param name="state">状態/param>
+        public void SetState(EEmployeeState state)
+        {
+            Data.State.Value = state;
+        }
+
+        #endregion
+
         /// <summary>
         /// 初期化
         /// </summary>
@@ -78,11 +116,11 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             OnUpdate();
             CheckData();
 
-            Data.HP.Value       = UnityEngine.Random.Range(1, 11);
-            Data.Program.Value  = UnityEngine.Random.Range(10, 50);
-            Data.Graphic.Value  = UnityEngine.Random.Range(10, 50);
-            Data.Scenario.Value = UnityEngine.Random.Range(10, 50);
-            Data.Sound.Value    = UnityEngine.Random.Range(10, 50);
+            Data.HP.Value             = UnityEngine.Random.Range(1, 11);
+            Data.Param.Program.Value  = UnityEngine.Random.Range(10, 50);
+            Data.Param.Graphic.Value  = UnityEngine.Random.Range(10, 50);
+            Data.Param.Scenario.Value = UnityEngine.Random.Range(10, 50);
+            Data.Param.Sound.Value    = UnityEngine.Random.Range(10, 50);
 
         }
 

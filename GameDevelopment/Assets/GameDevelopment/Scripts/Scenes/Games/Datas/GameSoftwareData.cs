@@ -52,24 +52,9 @@ namespace GameDevelopment.Scenes.Games.Datas
         public IntReactiveProperty CompletionPer = new IntReactiveProperty(0);
 
         /// <summary>
-        /// プログラム
+        /// パラメーター
         /// </summary>
-        public IntReactiveProperty Program = new IntReactiveProperty(0);
-
-        /// <summary>
-        /// グラフィック
-        /// </summary>
-        public IntReactiveProperty Graphic = new IntReactiveProperty(0);
-
-        /// <summary>
-        /// シナリオ
-        /// </summary>
-        public IntReactiveProperty Scenario = new IntReactiveProperty(0);
-
-        /// <summary>
-        /// サウンド
-        /// </summary>
-        public IntReactiveProperty Sound = new IntReactiveProperty(0);
+        public BaseGameParamator Param = new BaseGameParamator();
 
         /// <summary>
         /// ゲームソフトのジャンル

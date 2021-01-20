@@ -33,7 +33,7 @@ public class CameraAspectRatio3D : MonoBehaviour
     /// <summary>
     /// 開始時に呼ばれる処理
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         Init();
     }

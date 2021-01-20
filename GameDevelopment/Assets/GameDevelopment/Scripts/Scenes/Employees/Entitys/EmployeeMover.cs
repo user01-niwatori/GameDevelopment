@@ -87,7 +87,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             {
                 // 社員の状態を監視し
                 // 状態に変化があれば移動タイプを設定する
-                _employeeCore.Data.State
+                _employeeCore.State
                              .Subscribe(x => SetMoveType(x))
                              .AddTo(this);
 
@@ -152,7 +152,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void CheckMovement()
         {
-            switch (_employeeCore.Data.State.Value)
+            switch (_employeeCore.State.Value)
             {
                 case EEmployeeState.GoToWork:
                     CheckGoToWork();
@@ -173,7 +173,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 Stop();
-                _employeeCore.Data.State.Value = EEmployeeState.Work;
+                _employeeCore.SetState(EEmployeeState.Work);
             }
         }
 
@@ -187,7 +187,8 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 Stop();
-                _employeeCore.Data.State.Value = EEmployeeState.Sleep;
+                //_employeeCore.State.Value = EEmployeeState.Sleep;
+                _employeeCore.SetState(EEmployeeState.Sleep);
             }
         }
 

@@ -3,6 +3,7 @@ using UniRx;
 using System.Collections.Generic;
 using UnityEngine;
 using GameDevelopment.Common.Expansions;
+using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.Employees.Datas
 {
@@ -65,34 +66,19 @@ namespace GameDevelopment.Scenes.Employees.Datas
         public int DevelopmentTime = 3;
 
         /// <summary>
-        /// 体力
-        /// </summary>
-        public IntReactiveProperty HP = new IntReactiveProperty(0);
-
-        /// <summary>
         /// 年棒
         /// </summary>
         public int YearStick = 0;
 
         /// <summary>
-        /// プログラム
+        /// 体力
         /// </summary>
-        public IntReactiveProperty Program = new IntReactiveProperty(0);
+        public IntReactiveProperty HP = new IntReactiveProperty(0);
 
         /// <summary>
-        /// グラフィック
+        /// パラメーター
         /// </summary>
-        public IntReactiveProperty Graphic = new IntReactiveProperty(0);
-
-        /// <summary>
-        /// シナリオ
-        /// </summary>
-        public IntReactiveProperty Scenario = new IntReactiveProperty(0);
-
-        /// <summary>
-        /// サウンド
-        /// </summary>
-        public IntReactiveProperty Sound = new IntReactiveProperty(0);
+        public BaseGameParamator Param = new BaseGameParamator();
 
         /// <summary>
         /// 職業データ

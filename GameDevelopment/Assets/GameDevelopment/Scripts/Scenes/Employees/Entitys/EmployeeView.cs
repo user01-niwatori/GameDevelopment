@@ -59,27 +59,27 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         private void CheckData()
         {
             // HPを表示
-            _employeeCore.Data.HP
+            _employeeCore.HP
                 .Subscribe(x => _hpText.text = x.ToString())
                 .AddTo(this);
 
             // プログラムを表示
-            _employeeCore.Data.Program
+            _employeeCore.Program
                 .Subscribe(x => _programText.text = x.ToString())
                 .AddTo(this);
 
             // グラフィックを表示
-            _employeeCore.Data.Graphic
+            _employeeCore.Graphic
                 .Subscribe(x => _graphicText.text = x.ToString())
                 .AddTo(this);
 
             // シナリオを表示
-            _employeeCore.Data.Scenario
+            _employeeCore.Scenario
                 .Subscribe(x => _scenarioText.text = x.ToString())
                 .AddTo(this);
 
             // サウンドを表示
-            _employeeCore.Data.Sound
+            _employeeCore.Sound
                 .Subscribe(x => _soundText.text = x.ToString())
                 .AddTo(this);
         }
