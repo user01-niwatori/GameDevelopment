@@ -1,11 +1,12 @@
 ﻿using UniRx;
+using System;
 
 namespace GameDevelopment.Common.Datas
 {
     /// <summary>
     /// ゲームのベースとなるパラメーター
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class BaseGameParamator
     {
         /// <summary>

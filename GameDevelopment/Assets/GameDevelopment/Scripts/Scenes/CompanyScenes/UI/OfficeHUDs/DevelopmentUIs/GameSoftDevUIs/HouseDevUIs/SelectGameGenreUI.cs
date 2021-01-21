@@ -35,18 +35,6 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         private GameObject _content = default;
 
         /// <summary>
-        /// 右に移動するボタン
-        /// </summary>
-        [SerializeField]
-        private Button _rightButton = default;
-
-        /// <summary>
-        /// 左に移動するボタン
-        /// </summary>
-        [SerializeField]
-        private Button _leftButton = default;
-
-        /// <summary>
         /// 戻るボタン
         /// </summary>
         [SerializeField]
@@ -55,7 +43,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <summary>
         /// ゲームジャンルのボタンリスト
         /// </summary>
-        private List<GameGenreInfoUI> _gameGenreList = new List<GameGenreInfoUI>();
+        private List<GameGenreInfoUI> _gameGenreList = new List<GameGenreInfoUI>((int)EGameSoftGenreName.Max);
 
         /// <summary>
         /// ゲームオブジェクト表示時
@@ -87,7 +75,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
             foreach (var genre in GameInfo.User.Rock.GameSoftGenres)
             {
                 // 選択肢として既に生成済みなら処理を返す
-                if (IsSameGenreName(genre.ToString())) { continue; }
+                if (IsSameGenreName(genre.Name)) { continue; }
 
                 // 選択肢生成
                 // リストに格納
@@ -110,11 +98,11 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </remarks>
         /// <param name="name">ゲームジャンル</param>
         /// <returns></returns>
-        private bool IsSameGenreName(string name)
+        private bool IsSameGenreName(EGameSoftGenreName name)
         {
             for (int i = 0; i < _gameGenreList.Count; i++)
             {
-                if (_gameGenreList[i].Name == name)
+                if (_gameGenreList[i].Name == name.ToString())
                 {
                     return true;
                 }

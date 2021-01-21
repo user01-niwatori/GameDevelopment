@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using GameDevelopment.Scenes.Games.Datas;
 using GameDevelopment.Scenes.Games.Datas.Genres;
+using GameDevelopment.Scenes.Games.Datas.Contents;
 using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Employees.Generators;
 using GameDevelopment.Common.Datas;
@@ -36,9 +37,15 @@ namespace GameDevelopment.Scenes.Companys.Entitys
             }
 
             // ゲームジャンル開放
-            for(int i = 1; i < 10; i++)
+            for(int i = 1; i < (int)EGameSoftGenreName.Max; i++)
             {
                 GameInfo.User.Rock.GameSoftGenres.Add(new GameSoftGenreData((EGameSoftGenreName)i));
+            }
+
+            // ゲーム内容開放
+            for(int i = 1; i < (int)EGameSoftContentName.Max; i++)
+            {
+                GameInfo.User.Rock.GameSoftContents.Add(new GameSoftContentData((EGameSoftContentName)i));
             }
 
             // 社員生成

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameDevelopment.Common.Datas;
 using UniRx;
 using GameDevelopment.Scenes.Games.Datas.Genres;
+using GameDevelopment.Scenes.Games.Datas.Contents;
 
 namespace GameDevelopment.Scenes.Games.Datas
 {

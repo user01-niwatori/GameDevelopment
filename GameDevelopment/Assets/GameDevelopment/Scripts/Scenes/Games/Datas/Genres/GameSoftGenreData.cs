@@ -28,19 +28,6 @@ namespace GameDevelopment.Scenes.Games.Datas.Genres
     };
 
     /// <summary>
-    /// 評価値
-    /// </summary>
-    public enum EEvaluation
-    {
-        E,
-        D,
-        C,
-        B,
-        A,
-        S,
-    };
-
-    /// <summary>
     /// ゲームソフトのジャンルクラス
     /// </summary>
     [Serializable]
@@ -57,14 +44,14 @@ namespace GameDevelopment.Scenes.Games.Datas.Genres
         public int EP = 0;
 
         /// <summary>
-        /// 名前
-        /// </summary>
-        public EGameSoftGenreName Name = EGameSoftGenreName.None;
-
-        /// <summary>
         /// 世間の評価値
         /// </summary>
         public EEvaluation Evaluation = EEvaluation.E;
+
+        /// <summary>
+        /// 名前
+        /// </summary>
+        public EGameSoftGenreName Name = EGameSoftGenreName.None;
 
         /// <summary>
         /// コンストラクタ

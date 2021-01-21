@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameDevelopment.Scenes.Games.Datas.Genres;
+using GameDevelopment.Scenes.Games.Datas.Contents;
 
 namespace GameDevelopment.Common.Datas
 {

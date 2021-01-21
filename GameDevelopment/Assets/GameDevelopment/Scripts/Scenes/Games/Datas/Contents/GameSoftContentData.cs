@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GameDevelopment.Scenes.Games.Datas.Genres
+namespace GameDevelopment.Scenes.Games.Datas.Contents
 {
     /// <summary>
     /// ゲームソフトの内容の名前
@@ -30,14 +30,14 @@ namespace GameDevelopment.Scenes.Games.Datas.Genres
         public int EP = 0;
 
         /// <summary>
-        /// 世間の評価値
-        /// </summary>
-        public EEvaluation Evaluation = EEvaluation.E;
-
-        /// <summary>
         /// 名前
         /// </summary>
         public EGameSoftContentName Name = EGameSoftContentName.None;
+
+        /// <summary>
+        /// 世間の評価値
+        /// </summary>
+        public EEvaluation Evaluation = EEvaluation.E;
 
         /// <summary>
         /// コンストラクタ

@@ -46,7 +46,6 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         public string Name { get { return _genreNameText.text; } }
 
-
         /// <summary>
         /// 初期化
         /// </summary>
