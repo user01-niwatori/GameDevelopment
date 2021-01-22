@@ -23,6 +23,26 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     public class EmployeeAnimator : NewBehaviour
     {
         /// <summary>
+        /// IdleのHash値
+        /// </summary>
+        private static int Hash_Idle = Animator.StringToHash(EAnimationName.Idle.ToString());
+
+        /// <summary>
+        /// MoveのHash値
+        /// </summary>
+        private static int Hash_Move = Animator.StringToHash(EAnimationName.Move.ToString());
+
+        /// <summary>
+        /// WorkのHash値
+        /// </summary>
+        private static int Hash_Work = Animator.StringToHash(EAnimationName.Work.ToString());
+
+        /// <summary>
+        /// RestのHash値
+        /// </summary>
+        private static int Hash_Rest = Animator.StringToHash(EAnimationName.Rest.ToString());
+
+        /// <summary>
         /// Animator
         /// </summary>
         private Animator _animator = default;
@@ -32,7 +52,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public bool Idle 
         {
-            set { _animator.SetBool(EAnimationName.Idle.ToString(), value); }
+            set { _animator.SetBool(Hash_Idle, value); }
         }
 
         /// <summary>
@@ -40,7 +60,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public bool Move
         {
-            set { _animator.SetBool(EAnimationName.Move.ToString(), value); }
+            set { _animator.SetBool(Hash_Move, value); }
         }
 
         /// <summary>
@@ -48,7 +68,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public bool Work
         {
-            set{ _animator.SetBool(EAnimationName.Work.ToString(), value); }
+            set{ _animator.SetBool(Hash_Work, value); }
         }
 
         /// <summary>
@@ -56,7 +76,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public bool Rest 
         {
-            set { _animator.SetBool(EAnimationName.Rest.ToString(), value); }
+            set { _animator.SetBool(Hash_Rest, value); }
         }
 
         /// <summary>

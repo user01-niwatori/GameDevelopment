@@ -51,7 +51,8 @@ namespace GameDevelopment.Scenes.Companys.Entitys
             // 社員生成
             for (int i = 0; i < 4; i++)
             {
-                _employeeGenerator.Create(0);
+                _employeeGenerator.Create(i);
+               
             }
 
             //_employeeGenerator.Initialize();

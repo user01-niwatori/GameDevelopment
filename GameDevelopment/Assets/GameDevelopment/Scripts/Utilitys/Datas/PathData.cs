@@ -32,4 +32,9 @@ public class PathData
     /// ゲームジャンル選択画面で表示されるジャンル
     /// </summary>
     public const string SelectGameContent = "Prefabs/HouseDevUI/GameContentInfoUI";
+
+    /// <summary>
+    /// 社員のPath
+    /// </summary>
+    public const string Employee = "Prefabs/Employees/Employee_";
 }

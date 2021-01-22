@@ -17,12 +17,6 @@ namespace GameDevelopment.Scenes.Employees.Generators
         private GameObject _parent = default;
 
         /// <summary>
-        /// 社員のPrefabデータ
-        /// </summary>
-        [SerializeField]
-        private EmployeeCore[] _employeePrefabs = default;
-
-        /// <summary>
         /// 社員達
         /// </summary>
         private List<EmployeeCore> _employees = new List<EmployeeCore>();
@@ -47,10 +41,12 @@ namespace GameDevelopment.Scenes.Employees.Generators
         private void Load(int number)
         {
             int id                    = GameInfo.User.Company.CurrentOffice.Employees[number].ID;
-            var employee              = Instantiate(_employeePrefabs[id].gameObject);
+            var path                  = PathData.Employee + (number + 1).ToString("D2");
+            var employee              = Instantiate(Resources.Load(path)) as GameObject;
+            var employeeCore          = employee.GetComponent<EmployeeCore>();
             employee.transform.parent = _parent.transform;
-            employee.GetComponent<EmployeeCore>().Initialize(number);
-            _employees.Add(_employeePrefabs[id]);
+            employeeCore.Initialize(number);
+            _employees.Add(employeeCore);
         }
 
 

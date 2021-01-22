@@ -46,6 +46,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         private SelectGameContentsUI _selectGameContentsUI = default;
 
         /// <summary>
+        /// ゲームディレクター選択UI
+        /// </summary>
+        [SerializeField]
+        private SelectGameDirectorUI _selectGameDirectorUI = default;
+
+        /// <summary>
         /// 開発予定のゲームソフト
         /// </summary>
         private GameSoftwareData _gameSoft = new GameSoftwareData();
@@ -98,6 +104,15 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         }
 
         /// <summary>
+        /// ゲームディレクターを選択UI表示
+        /// </summary>
+        public void DisplaySelectGameDirectorUI()
+        {
+            Hide();
+            _selectGameDirectorUI.SetEnabled(true);
+        }
+
+        /// <summary>
         /// 子オブジェクトのUIを非表示にする
         /// </summary>
         private void Hide()
@@ -106,6 +121,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
             _selectGameHardUI.SetEnabled(false);
             _selectGameGenreUI.SetEnabled(false);
             _selectGameContentsUI.SetEnabled(false);
+            _selectGameDirectorUI.SetEnabled(false);
         }
 
         /// <summary>
