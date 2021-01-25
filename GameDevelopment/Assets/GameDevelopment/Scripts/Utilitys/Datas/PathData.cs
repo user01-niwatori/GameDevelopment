@@ -37,4 +37,9 @@ public class PathData
     /// 社員のPath
     /// </summary>
     public const string Employee = "Prefabs/Employees/Employee_";
+
+    /// <summary>
+    /// 社員情報IconのPath
+    /// </summary>
+    public const string EmployeeInfoIcon = "Prefabs/Icons/Employees/EmployeeInfoIcon_";
 }

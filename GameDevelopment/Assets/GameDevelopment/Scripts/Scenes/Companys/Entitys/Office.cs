@@ -59,7 +59,7 @@ namespace GameDevelopment.Scenes.Companys.Entitys
         }
 
         /// <summary>
-        /// ゲームソフト開発を始める
+        /// ゲームソフト開発のプロジェクトを始める
         /// </summary>
         public void StartGameSoftProduct(GameSoftwareData soft)
         {

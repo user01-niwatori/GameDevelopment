@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Entitys;
+using GameDevelopment.Scenes.Employees.Tables;
 
 namespace GameDevelopment.Scenes.Employees.Generators
 {
@@ -19,7 +20,7 @@ namespace GameDevelopment.Scenes.Employees.Generators
         /// <summary>
         /// 社員達
         /// </summary>
-        private List<EmployeeCore> _employees = new List<EmployeeCore>();
+        private List<EmployeeCore> _employees = new List<EmployeeCore>(EmployeeTable.MaxEmployee);
 
         /// <summary>
         /// 初期化処理

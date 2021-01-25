@@ -29,15 +29,18 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         [SerializeField]
         private Button _returnButton = default;
 
-        //private List<>
+        /// <summary>
+        /// 社員アイコンのリスト
+        /// </summary>
+        private List<EmployeeInfoIconUI> _employeeIconList = new List<EmployeeInfoIconUI>();
 
-        ///// <summary>
-        ///// ゲームオブジェクト表示時
-        ///// </summary>
-        //private void OnEnable()
-        //{
-            
-        //}
+        /// <summary>
+        /// ゲームオブジェクト表示時
+        /// </summary>
+        private void OnEnable()
+        {
+            CreateEmployeeList();
+        }
 
         /// <summary>
         /// Start
@@ -58,31 +61,42 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         private void CreateEmployeeList()
         {
-            //foreach(var employee in GameInfo.User.Company.CurrentOffice.Employees)
-            //{
-            //    if(employee.Name == )
-            //}
+            // 自社の社員を選択肢として表示
+            foreach (var employee in GameInfo.User.Company.CurrentOffice.Employees)
+            {
+                // 選択肢としてすでに生成済みなら処理を返す
+                if (IsSameContentID(employee.ID)) { continue; }
+
+                // 選択肢生成
+                // リストに格納
+                var prefab     = Instantiate(Resources.Load($"{PathData.EmployeeInfoIcon}{employee.ID}"), _content.transform) as GameObject;
+                var iconInfoUI = prefab.GetComponent<EmployeeInfoIconUI>();
+                _employeeIconList.Add(iconInfoUI);
+
+                // 初期化
+                iconInfoUI.Initialize(employee.ID);
+            }
         }
 
-        ///// <summary>
-        ///// 同じ社員の名前か？
-        ///// </summary>
-        ///// <remarks>
-        ///// TRUE:  同じ名前だった
-        ///// FALSE: 違う名前だった
-        ///// </remarks>
-        ///// <param name="name">ゲーム内容</param>
-        ///// <returns></returns>
-        //private bool IsSameContentName(string name)
-        //{
-        //    for (int i = 0; i < _gameContentsList.Count; i++)
-        //    {
-        //        if (_gameContentsList[i].Name == name.ToString())
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        /// <summary>
+        /// 同じ社員のIDか？
+        /// </summary>
+        /// <remarks>
+        /// TRUE:  同じIDだった
+        /// FALSE: 違うIDだった
+        /// </remarks>
+        /// <param name="id">社員ID</param>
+        /// <returns></returns>
+        private bool IsSameContentID(int id)
+        {
+            for (int i = 0; i < _employeeIconList.Count; i++)
+            {
+                if (_employeeIconList[i].ID == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

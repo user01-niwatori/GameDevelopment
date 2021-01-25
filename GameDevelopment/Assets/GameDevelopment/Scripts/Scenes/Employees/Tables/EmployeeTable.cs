@@ -11,6 +11,11 @@ namespace GameDevelopment.Scenes.Employees.Tables
     public class EmployeeTable
     {
         /// <summary>
+        /// 社員の細田人数
+        /// </summary>
+        public const int MaxEmployee = 10;
+
+        /// <summary>
         /// パラメーター
         /// </summary>
         public List<EmployeeData> Param = new List<EmployeeData>();
