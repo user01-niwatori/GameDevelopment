@@ -13,7 +13,7 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
     /// </summary>
     private static T _instance;
 
-    public static T Instance
+    public static T I
     {
         get
         {

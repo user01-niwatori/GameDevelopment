@@ -84,7 +84,7 @@ public class OfficeNameUI : NewBehaviour
             GameInfo.User.Company.CurrentOffice.CreateEmployees(0);
         }
 
-        SceneFadeManager.Instance.Transition(SceneName.Company);
+        SceneFadeManager.I.Transition(SceneName.Company);
         Destroy(this.gameObject);
     }
 }

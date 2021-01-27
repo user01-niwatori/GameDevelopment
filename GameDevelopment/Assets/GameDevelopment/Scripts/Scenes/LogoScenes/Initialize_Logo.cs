@@ -13,8 +13,8 @@ namespace GameDevelopment.Scenes.LogoScenes
         /// </summary>
         private async void Start()
         {
-            await SceneFadeManager.Instance.OnTransitionFinished;
-            SceneFadeManager.Instance.Transition(SceneName.DataCheck);
+            await SceneFadeManager.I.OnTransitionFinished;
+            SceneFadeManager.I.Transition(SceneName.DataCheck);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace GameDevelopment.Scenes.DataCheckScenes
     {
         private async void Start()
         {
-            await SceneFadeManager.Instance.OnTransitionFinished;
-            SceneFadeManager.Instance.Transition(SceneName.Title);
+            await SceneFadeManager.I.OnTransitionFinished;
+            SceneFadeManager.I.Transition(SceneName.Title);
         }
     }
 }
