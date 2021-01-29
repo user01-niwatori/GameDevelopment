@@ -187,7 +187,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
             {
                 Stop();
-                //_employeeCore.State.Value = EEmployeeState.Sleep;
                 _employeeCore.SetState(EEmployeeState.Sleep);
             }
         }

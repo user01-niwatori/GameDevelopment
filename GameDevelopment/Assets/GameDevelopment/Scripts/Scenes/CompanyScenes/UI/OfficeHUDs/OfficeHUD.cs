@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs;
+using GameDevelopment.Scenes.CompanyScenes.UI.HUDs.ButtonListUIs;
+using GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.EmployeeUIs;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
 {
@@ -9,10 +11,10 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
     public class OfficeHUD : NewBehaviour
     {
         /// <summary>
-        /// 開発情報のボタンリスト
+        /// ボタンリストUI
         /// </summary>
         [SerializeField]
-        private DevInfoButtonList _devInfoButtonList = default;
+        private ButtonListUI _buttonListUI = default;
 
         /// <summary>
         /// 開発中のソフト/ハードに関するUI
@@ -20,13 +22,18 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
         [SerializeField]
         private DevelopmentUI _developmentUI = default;
 
+        /// <summary>
+        /// 社員UI
+        /// </summary>
+        [SerializeField]
+        private EmployeesUI _employeesUI = default;
 
         /// <summary>
         /// ゲームオブジェクト表示時
         /// </summary>
         private void OnEnable()
         {
-            DispalyDevInfoButtonList();
+            //DispalyDevInfoButtonList();
         }
 
         /// <summary>
@@ -35,7 +42,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
         public void DispalyDevInfoButtonList()
         {
             Hide();
-            _devInfoButtonList.SetEnabled(true);
+            _buttonListUI.SetEnabled(true);
         }
 
         /// <summary>
@@ -48,11 +55,21 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
         }
 
         /// <summary>
+        /// 社員UI　表示/非表示
+        /// </summary>
+        public void DisplayEmployeeUI()
+        {
+            Hide();
+            _employeesUI.SetEnabled(true);
+        }
+
+        /// <summary>
         /// 非表示
         /// </summary>
         private void Hide()
         {
             _developmentUI.SetEnabled(false);
+            _employeesUI.SetEnabled(false);
         }
     }
 }

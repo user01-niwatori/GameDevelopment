@@ -1,13 +1,14 @@
 ﻿using UniRx;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
+using GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs;
 
-namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
+namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs.ButtonListUIs
 {
     /// <summary>
-    /// 開発情報のボタンリスト
+    /// ボタンリストUI
     /// </summary>
-    public class DevInfoButtonList : NewBehaviour
+    public class ButtonListUI : NewBehaviour
     {
         /// <summary>
         /// Office HUD
@@ -46,6 +47,18 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
         private Button _systemButton = default;
 
         /// <summary>
+        /// 社員ボタン
+        /// </summary>
+        [SerializeField]
+        private Button _employeeButton = default;
+
+        /// <summary>
+        /// 戻るボタン
+        /// </summary>
+        [SerializeField]
+        private Button _returnButton = default;
+
+        /// <summary>
         /// Start
         /// </summary>
         private void Start()
@@ -56,6 +69,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
                 .OnClickAsObservable()
                 .Subscribe(_ => _officeHUD.DisplayDevelopmentUI())
                 .AddTo(this);
+
+            // 社員ボタン押下時
+            // 社員情報のUI表示
+            _employeeButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _officeHUD.DisplayEmployeeUI());
         }
     }
 

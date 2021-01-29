@@ -21,10 +21,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public void PointerEnter_DisplayHUD()
         {
-            if(_employeeView)
-            {
-                _employeeView.gameObject.SetActive(true);
-            }
+            _employeeView?.gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -32,10 +29,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public void PointerExit_HideHUD()
         {
-            if(_employeeView)
-            {
-                _employeeView.gameObject.SetActive(false);
-            }
+            _employeeView?.gameObject.SetActive(false);
         }
     }
 }

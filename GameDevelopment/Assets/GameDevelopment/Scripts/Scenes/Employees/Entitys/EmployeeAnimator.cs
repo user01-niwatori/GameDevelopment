@@ -48,38 +48,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         private Animator _animator = default;
 
         /// <summary>
-        /// アイドル
-        /// </summary>
-        public bool Idle 
-        {
-            set { _animator.SetBool(Hash_Idle, value); }
-        }
-
-        /// <summary>
-        /// 移動
-        /// </summary>
-        public bool Move
-        {
-            set { _animator.SetBool(Hash_Move, value); }
-        }
-
-        /// <summary>
-        /// 作業
-        /// </summary>
-        public bool Work
-        {
-            set{ _animator.SetBool(Hash_Work, value); }
-        }
-
-        /// <summary>
-        /// 休む
-        /// </summary>
-        public bool Rest 
-        {
-            set { _animator.SetBool(Hash_Rest, value); }
-        }
-
-        /// <summary>
         /// Start
         /// </summary>
         private void Start()
@@ -87,48 +55,46 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             _animator  = GetComponent<Animator>();
             var mover  = GetComponent<EmployeeMover>();
 
-            if(mover)
-            {
-                // 状態が変わりしだい発行
-                mover.MoveType.Subscribe(x => SetAnimation(x));
-            }
+            // 状態が変わりしだい発行
+            mover?.MoveType.Subscribe(x => PlayAnimation(x));
         }
 
         /// <summary>
-        /// アニメーションを設定
+        /// アニメーションを再生
         /// </summary>
-        /// <param name="type"></param>
-        private void SetAnimation(EMoveType type)
+        /// <param name="type">移動タイプ</param>
+        private void PlayAnimation(EMoveType type)
         {
-            InitializeAnimation();
+            // 再生中のアニメーションを止める
+            StopAnimation();
 
             // 移動状態に合わせてアニメーションを再生
             switch (type)
             {
                 case EMoveType.Idle:
-                    Idle = true;
+                    _animator.SetBool(Hash_Idle, true);
                     break;
                 case EMoveType.Move:
-                    Move = true;
+                    _animator.SetBool(Hash_Move, true);
                     break;
                 case EMoveType.Work:
-                    Work = true;
+                    _animator.SetBool(Hash_Work, true);
                     break;
                 case EMoveType.Rest:
-                    Rest = true;
+                    _animator.SetBool(Hash_Rest, true);
                     break;
             }
         }
 
         /// <summary>
-        /// アニメーション情報を初期化
+        /// アニメーションを停止
         /// </summary>
-        private void InitializeAnimation()
+        private void StopAnimation()
         {
-            Idle = false;
-            Move = false;
-            Work = false;
-            Rest = false;
+            _animator.SetBool(Hash_Idle, false);
+            _animator.SetBool(Hash_Move, false);
+            _animator.SetBool(Hash_Work, false);
+            _animator.SetBool(Hash_Rest, false);
         }
     }
 }

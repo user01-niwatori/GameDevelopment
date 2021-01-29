@@ -22,6 +22,7 @@ public enum SceneName
 /// </summary>
 public class SceneFadeManager : SingletonMonoBehaviour<SceneFadeManager>
 {
+
     [SerializeField, Header("背景画像")]
     private Image _backgroundImage = default;
 

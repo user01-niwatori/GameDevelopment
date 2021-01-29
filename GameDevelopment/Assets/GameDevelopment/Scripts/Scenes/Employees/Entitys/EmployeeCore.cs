@@ -1,7 +1,6 @@
 ﻿using System;
 using UniRx;
 using UnityEngine;
-using GameDevelopment.Common.Expansions;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
 
@@ -101,17 +100,8 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             _number   = number;
 
             // 移動用クラスで座標設定
-            // 無い場合はそのままこのクラスで座標設定
             var mover = GetComponent<EmployeeMover>();
-            if(mover)
-            {
-                mover.SetLocation(EmployeeLocationInfo.Position[_number], EmployeeLocationInfo.Rotation[_number]);
-            }
-            else
-            {
-                transform.position = EmployeeLocationInfo.Position[_number];
-                transform.rotation = EmployeeLocationInfo.Rotation[_number];
-            }
+            mover?.SetLocation(EmployeeLocationInfo.Position[_number], EmployeeLocationInfo.Rotation[_number]);
 
             OnUpdate();
             CheckData();
