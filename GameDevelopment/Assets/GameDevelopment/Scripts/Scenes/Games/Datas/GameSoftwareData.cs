@@ -48,39 +48,14 @@ namespace GameDevelopment.Scenes.Games.Datas
         public int Rank = 0;
 
         /// <summary>
-        /// 完成度のパーセント
+        /// 開発情報
         /// </summary>
-        public IntReactiveProperty CompletionPer = new IntReactiveProperty(0);
+        public GameSoftDevData DevInfo = new GameSoftDevData();
 
         /// <summary>
         /// パラメーター
         /// </summary>
         public BaseGameParamator Param = new BaseGameParamator();
-
-        /// <summary>
-        /// ゲームソフトのジャンル
-        /// </summary>
-        public GameSoftGenreData Genre = new GameSoftGenreData();
-
-        /// <summary>
-        /// ゲームソフトの内容
-        /// </summary>
-        public GameSoftContentData Content = new GameSoftContentData();
-
-        /// <summary>
-        /// ゲームソフト開発期間のタイプ
-        /// </summary>
-        public EDevSoftPeriodType DevPeriod = EDevSoftPeriodType.Shot;
-
-        /// <summary>
-        /// 開発開始日
-        /// </summary>
-        public Date DevelopmentStartDate = default;
-
-        /// <summary>
-        /// 発売日
-        /// </summary>
-        public Date ReleaseDate = default;
 
         /// <summary>
         /// 週間売上
@@ -92,10 +67,6 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// </summary>
         public GameReviewData Review = default;
 
-        /// <summary>
-        /// ゲームハード
-        /// </summary>
-        public GameHardwareData Hard = default;
 
         /// <summary>
         /// 売上

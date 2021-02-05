@@ -89,6 +89,13 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 .Subscribe(_ => _houseDevUI.DisplaySelectGameGenreUI())
                 .AddTo(this);
 
+            // ディレクター選択ボタン押下時
+            // ディレクター選択UI表示
+            _selectDirectorButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _houseDevUI.DisplaySelectGameDirectorUI())
+                .AddTo(this);
+
             // 閉じるボタン押下時
             // UIを非表示にする。
             _closeButton
@@ -105,24 +112,32 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         {
             // 選択されたハードを表示する
             // 選択されていなければNoneを表示する
-            if(_houseDevUI.GameSoft.Hard != null)
-            {
-                var hardText = _selectHardButton.transform.Find("Text").GetComponent<Text>(); 
-                hardText.text     = _houseDevUI.GameSoft.Hard.Name;
-            }
-            else
-            {
-                var hardText = _selectHardButton.transform.Find("Text").GetComponent<Text>();
-                hardText.text = "None";
-            }
+            //if(_houseDevUI.GameSoft.DevInfo.Hard != null)
+            //{
+            //    var hardText = _selectHardButton.transform.Find("Text").GetComponent<Text>(); 
+            //    hardText.text     = _houseDevUI.GameSoft.DevInfo.Hard.Name;
+            //}
+            //else
+            //{
+            //    var hardText = _selectHardButton.transform.Find("Text").GetComponent<Text>();
+            //    hardText.text = "None";
+            //}
+
+            // 選択されたハードを表示する
+            var hardText  = _selectHardButton.transform.Find("Text").GetComponent<Text>();
+            hardText.text = _houseDevUI.GameSoft.DevInfo.Hard != null ? _houseDevUI.GameSoft.DevInfo.Hard.Name : "None"; 
 
             // 選択されたジャンルを表示
             var genreText  = _selectGenereButton.transform.Find("Text").GetComponent<Text>();
-            genreText.text = _houseDevUI.GameSoft.Genre.Name.ToString();
+            genreText.text = _houseDevUI.GameSoft.DevInfo.Genre != null ? _houseDevUI.GameSoft.DevInfo.Genre?.Name.ToString() : "None";
 
             // 選択された内容を表示
-            var contentsText = _selectContentsButton.transform.Find("Text").GetComponent<Text>();
-            contentsText.text = _houseDevUI.GameSoft.Content.Name.ToString();
+            var contentsText  = _selectContentsButton.transform.Find("Text").GetComponent<Text>();
+            contentsText.text = _houseDevUI.GameSoft.DevInfo.Content != null ? _houseDevUI.GameSoft.DevInfo.Content?.Name.ToString() : "None";
+
+            // 選択されたディレクターを表示
+            var directorText  = _selectDirectorButton.transform.Find("Text").GetComponent<Text>();
+            directorText.text = _houseDevUI.GameSoft.DevInfo.Director != null ? _houseDevUI.GameSoft.DevInfo.Director.Name : "None";
         }
 
     }

@@ -103,7 +103,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <param name="content"></param>
         private void OnClick_SelectContent(GameSoftContentData content)
         {
-            _houseDevUI.GameSoft.Content = content;
+            _houseDevUI.GameSoft.DevInfo.Content = content;
             _houseDevUI.DisplayCreateGameSoftUI();
         }
     }

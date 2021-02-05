@@ -115,7 +115,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         private void OnClick_SelectGenre(GameSoftGenreData genre)
         {
-            _houseDevUI.GameSoft.Genre = genre;
+            _houseDevUI.GameSoft.DevInfo.Genre = genre;
             _houseDevUI.DisplayCreateGameSoftUI();
         }
     }

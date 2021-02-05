@@ -61,7 +61,8 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
 
             // ボタン押下時
             // コールバック実行
-            _contentButton.GetComponent<Button>().OnClickAsObservable()
+            _contentButton
+                .OnClickAsObservable()
                 .Subscribe(_ => callback())
                 .AddTo(this);
         }

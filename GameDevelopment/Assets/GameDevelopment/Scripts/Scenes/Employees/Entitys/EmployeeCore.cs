@@ -16,6 +16,8 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     [RequireComponent(typeof(EmployeeMover))]
     public class EmployeeCore : NewBehaviour
     {
+        #region field
+
         /// <summary>
         /// HPを引く値
         /// </summary>
@@ -48,6 +50,8 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 GameInfo.User.Company.Offices[GameInfo.CurrentOffice].Employees[_number] = value;
             }
         }
+
+        #endregion
 
         #region getter/setter
 
@@ -91,6 +95,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         }
 
         #endregion
+
 
         /// <summary>
         /// 初期化

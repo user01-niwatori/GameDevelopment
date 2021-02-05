@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.UI;
-using GameDevelopment.Common.Datas;
-using GameDevelopment.Scenes.Employees.Datas;
+using UnityEngine.Events;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
 {
@@ -10,28 +10,33 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// </summary>
     public class EmployeeInfoIconUI : NewBehaviour
     {
-        //private EmployeeInfoUI
+        /// <summary>
+        /// アイコンボタン
+        /// </summary>
+        [SerializeField]
+        private Button _iconButton = default;
 
         /// <summary>
         /// ID
         /// </summary>
         public int ID { get; set; } = default;
 
-        private EmployeeData Data
-        {
-            get
-            {
-                return GameInfo.User.Company.CurrentOffice.Employees[ID];
-            }
-        }
-
         /// <summary>
         /// 初期化
         /// </summary>
-        /// <param name="id">社員ID</param>
-        public void Initialize(int id)
+        /// <param name="id">ID</param>
+        /// <param name="callback">コールバック</param>
+        public void Initialize(int id, UnityAction callback)
         {
+            // idを設定
             ID = id;
+
+            // ボタン押下時
+            // コールバックを実行
+            _iconButton
+                .OnClickAsObservable()
+                .Subscribe(_ => callback())
+                .AddTo(this);
         }
 
         

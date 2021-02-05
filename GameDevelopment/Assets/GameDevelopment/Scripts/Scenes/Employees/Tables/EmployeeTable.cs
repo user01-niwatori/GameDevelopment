@@ -11,7 +11,7 @@ namespace GameDevelopment.Scenes.Employees.Tables
     public class EmployeeTable
     {
         /// <summary>
-        /// 社員の細田人数
+        /// 社員の最高人数
         /// </summary>
         public const int MaxEmployee = 10;
 

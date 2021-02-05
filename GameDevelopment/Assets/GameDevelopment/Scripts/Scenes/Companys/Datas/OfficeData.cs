@@ -31,10 +31,6 @@ namespace GameDevelopment.Scenes.Companys.Datas
     [Serializable]
     public class OfficeData
     {
-        ///// <summary>
-        ///// 最大の社員数
-        ///// </summary>
-        //public int MaxEmployee = 0;
 
         /// <summary>
         /// 名前
@@ -184,7 +180,7 @@ namespace GameDevelopment.Scenes.Companys.Datas
 
             foreach (var soft in GameSofts)
             {
-                if ((GameInfo.Date.Year - soft.ReleaseDate.Year) == 0)
+                if ((GameInfo.Date.Year - soft.DevInfo.ReleaseDate.Year) == 0)
                 {
                     sales += soft.Sales();
                 }

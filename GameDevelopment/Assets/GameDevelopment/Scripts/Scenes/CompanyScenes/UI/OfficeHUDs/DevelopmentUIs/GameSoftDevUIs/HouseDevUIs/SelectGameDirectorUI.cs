@@ -1,4 +1,6 @@
 ﻿using GameDevelopment.Common.Datas;
+using GameDevelopment.Scenes.Employees.Datas;
+using GameDevelopment.Scenes.Employees.Tables;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,9 +32,15 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         private Button _returnButton = default;
 
         /// <summary>
+        /// 決定ボタン
+        /// </summary>
+        [SerializeField]
+        private Button _okButton = default;
+
+        /// <summary>
         /// 社員アイコンのリスト
         /// </summary>
-        private List<EmployeeInfoIconUI> _employeeIconList = new List<EmployeeInfoIconUI>();
+        private List<EmployeeInfoIconUI> _employeeIconList = new List<EmployeeInfoIconUI>(EmployeeTable.MaxEmployee);
 
         /// <summary>
         /// ゲームオブジェクト表示時
@@ -53,7 +61,14 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 .OnClickAsObservable()
                 .Subscribe(_ => _houseDevUI.DisplayCreateGameSoftUI())
                 .AddTo(this);
-                
+
+            // 決定ボタン押下時
+            // 選択したディレクターを保存し、前の画面に戻る。
+            _okButton
+                .OnClickAsObservable()
+                .Subscribe(_ => _houseDevUI.DisplayCreateGameSoftUI())
+                .AddTo(this);
+
         }
 
         /// <summary>
@@ -69,12 +84,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
 
                 // 選択肢生成
                 // リストに格納
-                var prefab     = Instantiate(Resources.Load($"{PathData.EmployeeInfoIcon}{employee.ID}"), _content.transform) as GameObject;
+                var prefab = Instantiate(Resources.Load($"{PathData.EmployeeInfoIcon}{employee.ID}"), _content.transform) as GameObject;
                 var iconInfoUI = prefab.GetComponent<EmployeeInfoIconUI>();
                 _employeeIconList.Add(iconInfoUI);
 
                 // 初期化
-                iconInfoUI.Initialize(employee.ID);
+                iconInfoUI.Initialize(employee.ID, () => OnClick_SelectGameDirector(employee));
             }
         }
 
@@ -97,6 +112,15 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// ボタン押下時、ディレクター選択
+        /// </summary>
+        /// <param name="employeeData"></param>
+        private void OnClick_SelectGameDirector(EmployeeData employeeData)
+        {
+            _houseDevUI.GameSoft.DevInfo.Director = employeeData;
         }
     }
 }

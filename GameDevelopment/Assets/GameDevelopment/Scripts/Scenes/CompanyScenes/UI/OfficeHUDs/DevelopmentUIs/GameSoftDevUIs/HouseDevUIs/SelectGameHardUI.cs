@@ -139,7 +139,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 {
                     _cts.Cancel();
                     _cts.Dispose();
-                    _houseDevUI.GameSoft.Hard = GameInfo.Industry.Hards[_selectHard];
+                    _houseDevUI.GameSoft.DevInfo.Hard = GameInfo.Industry.Hards[_selectHard];
                     _houseDevUI.DisplayCreateGameSoftUI();
                 })
                 .AddTo(this);

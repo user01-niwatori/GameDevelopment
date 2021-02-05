@@ -70,11 +70,34 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs.ButtonListUIs
                 .Subscribe(_ => _officeHUD.DisplayDevelopmentUI())
                 .AddTo(this);
 
+
+            _actionButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("アクション"));
+
+            _itemButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("アイテム"));
+
+            _infoButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("情報"));
+
+            _systemButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("システム"));
+
             // 社員ボタン押下時
             // 社員情報のUI表示
             _employeeButton
                 .OnClickAsObservable()
                 .Subscribe(_ => _officeHUD.DisplayEmployeeUI());
+
+            _returnButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("戻る"));
+
+
         }
     }
 
