@@ -100,7 +100,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <summary>
         /// ボタン押下時、内容を選択
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="content">内容</param>
         private void OnClick_SelectContent(GameSoftContentData content)
         {
             _houseDevUI.GameSoft.DevInfo.Content = content;

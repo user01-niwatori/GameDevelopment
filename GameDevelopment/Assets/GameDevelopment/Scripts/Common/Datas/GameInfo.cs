@@ -1,6 +1,4 @@
-﻿
-
-namespace GameDevelopment.Common.Datas
+﻿namespace GameDevelopment.Common.Datas
 {
     /// <summary>
     /// ゲーム情報
@@ -10,7 +8,7 @@ namespace GameDevelopment.Common.Datas
         /// <summary>
         /// 日付
         /// </summary>
-        public static Date Date = new Date();
+        public static Date Date = default;
 
         /// <summary>
         /// 現在のオフィス

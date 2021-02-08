@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using GameDevelopment.Scenes.Companys.Entitys;
 using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
 {
@@ -50,6 +51,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         [SerializeField]
         private SelectGameDirectorUI _selectGameDirectorUI = default;
+
+        /// <summary>
+        /// ゲーム開発規模選択UI
+        /// </summary>
+        [SerializeField]
+        private SelectGameScaleUI _selectGameScaleUI = default;
 
         /// <summary>
         /// 開発予定のゲームソフト
@@ -113,6 +120,15 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         }
 
         /// <summary>
+        /// ゲーム開発規模選択UI表示
+        /// </summary>
+        public void DisplaySelectGameScaleUI()
+        {
+            Hide();
+            _selectGameScaleUI.SetEnabled(true);
+        }
+
+        /// <summary>
         /// 子オブジェクトのUIを非表示にする
         /// </summary>
         private void Hide()
@@ -122,6 +138,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
             _selectGameGenreUI.SetEnabled(false);
             _selectGameContentsUI.SetEnabled(false);
             _selectGameDirectorUI.SetEnabled(false);
+            _selectGameScaleUI.SetEnabled(false);
         }
 
         /// <summary>
@@ -130,10 +147,26 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         public void Close()
         {
             Hide();
+            _gameSoft = null;
+            _gameSoft = new GameSoftwareData();
             this.gameObject.SetActive(false);
             _gameSoftDevUI.Close();
         }
 
+        /// <summary>
+        /// 決定ボタン押下時
+        /// </summary>
+        public void Decision()
+        {
+            Hide();
+
+            // ゲームソフト開発を開始する。
+            _office.StartGameSoftProduct(_gameSoft);
+            _gameSoft = default;
+        }
+
         #endregion
+
+
     }
 }

@@ -111,6 +111,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             OnUpdate();
             CheckData();
 
+            // 設定
             Data.HP.Value             = UnityEngine.Random.Range(1, 11);
             Data.Param.Program.Value  = UnityEngine.Random.Range(10, 50);
             Data.Param.Graphic.Value  = UnityEngine.Random.Range(10, 50);
@@ -214,6 +215,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void Work()
         {
+            
         }
 
         /// <summary>

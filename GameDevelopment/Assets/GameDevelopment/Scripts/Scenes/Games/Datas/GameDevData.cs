@@ -4,6 +4,7 @@ using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Games.Datas.Genres;
 using GameDevelopment.Scenes.Games.Datas.Contents;
+using GameDevelopment.Scenes.Games.Datas.Scales;
 
 namespace GameDevelopment.Scenes.Games.Datas
 {
@@ -14,20 +15,14 @@ namespace GameDevelopment.Scenes.Games.Datas
     public class GameDevData
     {
         /// <summary>
-        /// 開発開始日
+        /// 開発日情報
         /// </summary>
-        public Date DevelopmentStartDate = default;
-
-        /// <summary>
-        /// 発売日
-        /// </summary>
-        public Date ReleaseDate = default;
+        public DevelopmentDate Date = default;
 
         /// <summary>
         /// 完成度のパーセント
         /// </summary>
         public IntReactiveProperty CompletionPer = new IntReactiveProperty(0);
-
     }
 
     /// <summary>
@@ -52,22 +47,27 @@ namespace GameDevelopment.Scenes.Games.Datas
         public GameSoftContentData Content = default;
 
         /// <summary>
-        /// ディレクター
+        /// ゲームソフトの開発規模
+        /// </summary>
+        public GameSoftScaleData Scale = default;
+
+        /// <summary>
+        /// リードディレクター
         /// </summary>
         public EmployeeData Director = default;
 
         /// <summary>
-        /// プログラマー
+        /// リードプログラマー
         /// </summary>
         public EmployeeData Programmer= default;
 
         /// <summary>
-        /// デザイナー
+        /// リードデザイナー
         /// </summary>
         public EmployeeData Designer = default;
 
         /// <summary>
-        /// シナリオライター
+        /// リードシナリオライター
         /// </summary>
         public EmployeeData ScenarioWirter = default;
 
@@ -76,9 +76,6 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// </summary>
         public EmployeeData Composer = default;
 
-        /// <summary>
-        /// ゲームソフト開発期間のタイプ
-        /// </summary>
-        public EDevSoftPeriodType DevPeriod = EDevSoftPeriodType.Shot;
+
     }
 }

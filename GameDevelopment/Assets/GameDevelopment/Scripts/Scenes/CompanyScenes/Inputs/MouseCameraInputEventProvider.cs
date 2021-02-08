@@ -53,8 +53,14 @@ namespace GameDevelopment.Scenes.CompanyScenes.Inputs
         /// </summary>
         private Vector3 _dragCurrentPosition = default;
 
+        /// <summary>
+        /// 開始した回転の位置
+        /// </summary>
         private Vector3 _rotateStartPosition = default;
 
+        /// <summary>
+        /// 現在の回転の位置
+        /// </summary>
         private Vector3 _rotateCurrentPosition = default;
 
         /// <summary>
@@ -78,18 +84,6 @@ namespace GameDevelopment.Scenes.CompanyScenes.Inputs
                 .AddTo(this);
 
         }
-
-        ///// <summary>
-        ///// 移動方向の入力処理
-        ///// </summary>
-        //private void MoveDirectionInput()
-        //{
-        //    if (Input.GetKey(KeyCode.W)) _moveDirection.SetValueAndForceNotify(_casheTransform.forward);
-        //    if (Input.GetKey(KeyCode.S)) _moveDirection.SetValueAndForceNotify(_casheTransform.forward * -1);
-        //    if (Input.GetKey(KeyCode.D)) _moveDirection.SetValueAndForceNotify(_casheTransform.right);
-        //    if (Input.GetKey(KeyCode.A)) _moveDirection.SetValueAndForceNotify(_casheTransform.right * -1);
-        //}
-
 
         /// <summary>
         /// マウス入力移動

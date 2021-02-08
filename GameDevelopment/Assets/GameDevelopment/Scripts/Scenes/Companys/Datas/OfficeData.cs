@@ -127,23 +127,23 @@ namespace GameDevelopment.Scenes.Companys.Datas
             return sales;
         }
 
-        /// <summary>
-        /// ゲームハード年間売上
-        /// </summary>
-        /// <returns></returns>
-        public int HardAnnualSales()
-        {
-            int sales = 0;
+        ///// <summary>
+        ///// ゲームハード年間売上
+        ///// </summary>
+        ///// <returns></returns>
+        //public int HardAnnualSales()
+        //{
+        //    int sales = 0;
 
-            foreach(var hard in GameHards)
-            {
-                if((GameInfo.Date.Year - hard.ReleaseDate.Year) == 0)
-                {
-                    sales += hard.Sales();
-                }
-            }
-            return sales;
-        }
+        //    foreach(var hard in GameHards)
+        //    {
+        //        if((GameInfo.Date.Year - hard..Year) == 0)
+        //        {
+        //            sales += hard.Sales();
+        //        }
+        //    }
+        //    return sales;
+        //}
 
         #endregion
 
@@ -180,7 +180,7 @@ namespace GameDevelopment.Scenes.Companys.Datas
 
             foreach (var soft in GameSofts)
             {
-                if ((GameInfo.Date.Year - soft.DevInfo.ReleaseDate.Year) == 0)
+                if ((GameInfo.Date.D.Year - soft.DevInfo.Date.ReleaseDate.D.Year) == 0)
                 {
                     sales += soft.Sales();
                 }

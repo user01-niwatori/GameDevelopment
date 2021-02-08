@@ -38,6 +38,11 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         private Button _okButton = default;
 
         /// <summary>
+        /// 一時保存されたディレクター情報
+        /// </summary>
+        private EmployeeData _tempDirector = default;
+
+        /// <summary>
         /// 社員アイコンのリスト
         /// </summary>
         private List<EmployeeInfoIconUI> _employeeIconList = new List<EmployeeInfoIconUI>(EmployeeTable.MaxEmployee);
@@ -63,10 +68,15 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 .AddTo(this);
 
             // 決定ボタン押下時
-            // 選択したディレクターを保存し、前の画面に戻る。
+            // 選択されたディレクターを設定し、前の画面に戻る。
             _okButton
                 .OnClickAsObservable()
-                .Subscribe(_ => _houseDevUI.DisplayCreateGameSoftUI())
+                .Subscribe(_ =>
+                {
+                    _houseDevUI.GameSoft.DevInfo.Director = _tempDirector;
+                    _tempDirector = null;
+                    _houseDevUI.DisplayCreateGameSoftUI();
+                })
                 .AddTo(this);
 
         }
@@ -120,7 +130,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <param name="employeeData"></param>
         private void OnClick_SelectGameDirector(EmployeeData employeeData)
         {
-            _houseDevUI.GameSoft.DevInfo.Director = employeeData;
+            _tempDirector = employeeData;
         }
     }
 }
