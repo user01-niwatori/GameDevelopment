@@ -11,7 +11,7 @@ namespace GameDevelopment.Scenes.Companys.Entitys
     /// <summary>
     /// オフィス
     /// </summary>
-    public class Office : NewBehaviour
+    public class Office : BehaviourEnabled
     {
         /// <summary>
         /// 社員生成器

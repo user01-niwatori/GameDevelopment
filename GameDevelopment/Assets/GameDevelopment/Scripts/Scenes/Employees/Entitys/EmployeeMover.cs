@@ -38,58 +38,59 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// <summary>
     /// 社員の移動処理
     /// </summary>
-    [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(EmployeeCore))]
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EmployeeMover : NewBehaviour
+    public class EmployeeMover : BehaviourInitialized
     {
         /// <summary>
         /// デフォルトの位置
         /// </summary>
-        private Vector3 _defalutPosition = default;
+        protected Vector3 _defalutPosition = default;
 
         /// <summary>
         /// デフォルトの回転
         /// </summary>
-        private Quaternion _defalutRotation = default;
+        protected Quaternion _defalutRotation = default;
 
         /// <summary>
         /// 家の座標
         /// </summary>
-        private Vector3 _homePosition = new Vector3(10f, 0f, -8f);
+        protected Vector3 _homePosition = new Vector3(10f, 0f, -8f);
 
         /// <summary>
         /// 移動タイプ
         /// </summary>
-        private ReactiveProperty<EMoveType> _moveType = new ReactiveProperty<EMoveType>();
+        protected ReactiveProperty<EMoveType> _moveType = new ReactiveProperty<EMoveType>();
         public  IReadOnlyReactiveProperty<EMoveType> MoveType => _moveType;
 
         /// <summary>
         /// 社員のコア部分
         /// </summary>
-        private EmployeeCore _employeeCore = default;
+        protected EmployeeCore _employeeCore = default;
 
         /// <summary>
         /// NavMeshAgent
         /// </summary>
-        private NavMeshAgent _navMeshAgent = null;
+        protected NavMeshAgent _navMeshAgent = null;
 
         /// <summary>
         /// Start
         /// </summary>
-        private void Start()
+        private async void Start()
         {
             _employeeCore = GetComponent<EmployeeCore>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            await _employeeCore?.OnInitialized;
 
-            if(_employeeCore)
+            if (_employeeCore)
             {
+
                 // 社員の状態を監視し
                 // 状態に変化があれば移動タイプを設定する
                 _employeeCore.State
                              .Subscribe(x => SetMoveType(x))
                              .AddTo(this);
+
 
                 // 移動タイプがMove状態なら
                 // 移動中監視し、状態を変化させたりする。
@@ -98,6 +99,9 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                     .Subscribe(_ => CheckMovement())
                     .AddTo(this);
             }
+
+            // 初期化完了
+            _isInitialized.Value = true;
         }
 
         /// <summary>
@@ -167,7 +171,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// 仕事場へ移動中調べる
         /// 仕事場に着いたらWork状態にする
         /// </summary>
-        private void CheckGoToWork()
+        protected virtual void CheckGoToWork()
         {
             // 仕事場にたどり着いたら仕事をする
             if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
@@ -181,10 +185,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// 家に帰る中移動中調べる
         /// 家に着いたらSleep状態にする
         /// </summary>
-        private void CheckGoToHome()
+        protected virtual void CheckGoToHome()
         {
             // 家に着いたら寝る
-            if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
+            if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance * 10)
             {
                 Stop();
                 _employeeCore.SetState(EEmployeeState.Sleep);
@@ -194,6 +198,9 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// <summary>
         /// 位置情報を設定
         /// </summary>
+        /// <remarks>
+        /// EmployeeCore.csで使用されている。
+        /// </remarks>
         /// <param name="pos">座標</param>
         /// <param name="qua">回転</param>
         public void SetLocation(Vector3 pos, Quaternion qua)

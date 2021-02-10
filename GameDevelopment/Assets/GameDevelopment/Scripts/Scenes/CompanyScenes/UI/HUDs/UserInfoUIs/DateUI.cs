@@ -10,7 +10,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs.UserInfoUIs
     /// <summary>
     /// 日付のUI
     /// </summary>
-    public class DateUI : NewBehaviour
+    public class DateUI : BehaviourEnabled
     {
         /// <summary>
         /// 日付テキスト

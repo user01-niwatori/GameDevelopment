@@ -8,7 +8,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 自社開発UI
     /// </summary>
-    public class HouseDevUI : NewBehaviour
+    public class HouseDevUI : BehaviourEnabled
     {
         /// <summary>
         /// オフィス

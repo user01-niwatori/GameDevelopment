@@ -20,7 +20,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// </summary>
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(EmployeeMover))]
-    public class EmployeeAnimator : NewBehaviour
+    public class EmployeeAnimator : BehaviourInitialized
     {
         /// <summary>
         /// IdleのHash値
@@ -50,13 +50,16 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// <summary>
         /// Start
         /// </summary>
-        private void Start()
+        private async void Start()
         {
             _animator  = GetComponent<Animator>();
             var mover  = GetComponent<EmployeeMover>();
+            await mover?.OnInitialized;
 
             // 状態が変わりしだい発行
+            // 初期化完了
             mover?.MoveType.Subscribe(x => PlayAnimation(x));
+            _isInitialized.Value = true;
         }
 
         /// <summary>

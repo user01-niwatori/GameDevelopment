@@ -14,7 +14,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// このスクリプトを経由して社員クラス同士のやり取りを行う
     /// </remarks>
     [RequireComponent(typeof(EmployeeMover))]
-    public class EmployeeCore : NewBehaviour
+    public class EmployeeCore : BehaviourInitialized
     {
         #region field
 
@@ -96,14 +96,11 @@ namespace GameDevelopment.Scenes.Employees.Entitys
 
         #endregion
 
-
         /// <summary>
-        /// 初期化
+        /// Start
         /// </summary>
-        public void Initialize(int number)
+        private void Start()
         {
-            _number   = number;
-
             // 移動用クラスで座標設定
             var mover = GetComponent<EmployeeMover>();
             mover?.SetLocation(EmployeeLocationInfo.Position[_number], EmployeeLocationInfo.Rotation[_number]);
@@ -112,12 +109,22 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             CheckData();
 
             // 設定
-            Data.HP.Value             = UnityEngine.Random.Range(1, 11);
-            Data.Param.Program.Value  = UnityEngine.Random.Range(10, 50);
-            Data.Param.Graphic.Value  = UnityEngine.Random.Range(10, 50);
+            Data.HP.Value = 3;
+            Data.Param.Program.Value = UnityEngine.Random.Range(10, 50);
+            Data.Param.Graphic.Value = UnityEngine.Random.Range(10, 50);
             Data.Param.Scenario.Value = UnityEngine.Random.Range(10, 50);
-            Data.Param.Sound.Value    = UnityEngine.Random.Range(10, 50);
+            Data.Param.Sound.Value = UnityEngine.Random.Range(10, 50);
 
+            // 初期化完了
+            _isInitialized.Value = true;
+        }
+
+        /// <summary>
+        /// 初期化
+        /// </summary>
+        public void Initialize(int number)
+        {
+            _number   = number;
         }
 
         /// <summary>

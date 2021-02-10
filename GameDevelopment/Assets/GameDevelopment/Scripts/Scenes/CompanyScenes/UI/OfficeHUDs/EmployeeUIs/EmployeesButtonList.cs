@@ -7,7 +7,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.EmployeeUIs
     /// <summary>
     /// 社員UIのボタンリスト
     /// </summary>
-    public class EmployeesButtonList : NewBehaviour
+    public class EmployeesButtonList : BehaviourEnabled
     {
         /// <summary>
         /// 社員UI

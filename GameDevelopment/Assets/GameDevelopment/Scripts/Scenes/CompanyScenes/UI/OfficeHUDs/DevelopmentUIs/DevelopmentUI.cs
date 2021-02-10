@@ -7,7 +7,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs
     /// <summary>
     /// 開発中のソフト/ハードに関するUI
     /// </summary>
-    public class DevelopmentUI : NewBehaviour
+    public class DevelopmentUI : BehaviourEnabled
     {
         /// <summary>
         /// 開発するものを選択するボタンリスト

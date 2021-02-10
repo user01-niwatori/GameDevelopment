@@ -10,7 +10,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 開発するゲームソフトのジャンルを決めるUI
     /// </summary>
-    public class SelectGameGenreUI : NewBehaviour
+    public class SelectGameGenreUI : BehaviourEnabled
     {
         /// <summary>
         /// 移動量

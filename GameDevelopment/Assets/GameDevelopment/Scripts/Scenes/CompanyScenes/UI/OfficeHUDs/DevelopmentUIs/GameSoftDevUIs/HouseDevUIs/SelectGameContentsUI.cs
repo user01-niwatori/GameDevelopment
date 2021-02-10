@@ -10,7 +10,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 開発するゲームソフトのゲーム内容を選択するUI
     /// </summary>
-    public class SelectGameContentsUI : NewBehaviour
+    public class SelectGameContentsUI : BehaviourEnabled
     {
         /// <summary>
         /// 自社開発UI

@@ -3,7 +3,7 @@ using GameDevelopment.Common.Datas;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OfficeNameUI : NewBehaviour
+public class OfficeNameUI : BehaviourEnabled
 {
     /// <summary>
     /// メッセージテキスト

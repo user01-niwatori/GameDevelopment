@@ -9,7 +9,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 開発規模選択UI
     /// </summary>
-    public class SelectGameScaleUI : NewBehaviour
+    public class SelectGameScaleUI : BehaviourEnabled
     {
         /// <summary>
         /// UIリストの最大値

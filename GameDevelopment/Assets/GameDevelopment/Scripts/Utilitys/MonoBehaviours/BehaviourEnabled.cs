@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// このゲーム専用のBehaviour
-/// MonoBehaviourを使うのではなくこのクラスを利用してオブジェクトに干渉する。
+/// オブジェクト単位ではなく、クラス単位でのオブジェクト表示/非表示
+/// を可能にしたMonoBehaviour
 /// </summary>
-public class NewBehaviour : MonoBehaviour, IEnabled
+public class BehaviourEnabled : MonoBehaviour, IEnabled
 {
     /// <summary>
     /// ゲームオブジェクトの表示/非表示

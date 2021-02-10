@@ -22,7 +22,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 開発するゲームソフトのゲームハードを選択するUI
     /// </summary>
-    public class SelectGameHardUI : NewBehaviour
+    public class SelectGameHardUI : BehaviourEnabled
     {
         /// <summary>
         /// 移動量

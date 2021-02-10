@@ -4,7 +4,7 @@ using GameDevelopment.Scenes.Games.Datas;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
 {
-    public class GameHardInfoUI : NewBehaviour
+    public class GameHardInfoUI : BehaviourEnabled
     {
         /// <summary>
         /// ハードの名前

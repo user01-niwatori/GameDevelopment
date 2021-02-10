@@ -11,7 +11,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// ゲームディレクターを選択するUI
     /// </summary>
-    public class SelectGameDirectorUI : NewBehaviour
+    public class SelectGameDirectorUI : BehaviourEnabled
     {
         /// <summary>
         /// 自社開発UI

@@ -7,7 +7,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// ゲームソフトボタンリスト
     /// </summary>
-    public class SoftDevButtonList : NewBehaviour
+    public class SoftDevButtonList : BehaviourEnabled
     {
         /// <summary>
         /// ゲームソフト開発UI

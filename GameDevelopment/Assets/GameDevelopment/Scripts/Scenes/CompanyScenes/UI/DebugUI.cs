@@ -8,7 +8,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI
     /// <summary>
     /// デバッグ周りのUI
     /// </summary>
-    public class DebugUI : NewBehaviour
+    public class DebugUI : BehaviourEnabled
     {
         /// <summary>
         /// 社員生成器

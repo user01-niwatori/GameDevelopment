@@ -7,7 +7,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// <summary>
     /// 社員の情報を視覚的に表示
     /// </summary>
-    public class EmployeeView : NewBehaviour
+    public class EmployeeView : BehaviourInitialized
     {
         /// <summary>
         /// 社員のコア部分
@@ -48,9 +48,13 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// <summary>
         /// Start
         /// </summary>
-        private void Start()
+        private async void Start()
         {
+            await _employeeCore.OnInitialized;
             CheckData();
+
+            // 初期化完了
+            _isInitialized.Value = true;
         }
 
         /// <summary>

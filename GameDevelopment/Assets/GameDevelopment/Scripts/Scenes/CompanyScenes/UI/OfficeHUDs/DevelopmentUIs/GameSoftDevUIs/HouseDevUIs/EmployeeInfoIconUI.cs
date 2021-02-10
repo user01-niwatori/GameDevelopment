@@ -8,7 +8,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 社員情報のアイコンUI
     /// </summary>
-    public class EmployeeInfoIconUI : NewBehaviour
+    public class EmployeeInfoIconUI : BehaviourEnabled
     {
         /// <summary>
         /// アイコンボタン

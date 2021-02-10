@@ -7,7 +7,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// ゲームソフト作成UI
     /// </summary>
-    public class CreateGameSoftUI : NewBehaviour
+    public class CreateGameSoftUI : BehaviourEnabled
     {
         #region field 
 

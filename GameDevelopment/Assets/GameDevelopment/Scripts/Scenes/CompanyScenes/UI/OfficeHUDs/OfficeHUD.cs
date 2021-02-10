@@ -8,7 +8,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs
     /// <summary>
     /// OfficeのHUD
     /// </summary>
-    public class OfficeHUD : NewBehaviour
+    public class OfficeHUD : BehaviourEnabled
     {
         /// <summary>
         /// ボタンリストUI

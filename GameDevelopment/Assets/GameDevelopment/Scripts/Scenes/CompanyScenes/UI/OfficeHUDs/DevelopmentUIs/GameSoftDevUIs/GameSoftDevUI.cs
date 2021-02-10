@@ -6,7 +6,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
     /// <summary>
     /// 開発中のゲームソフトに関するUIクラス
     /// </summary>
-    public class GameSoftDevUI : NewBehaviour
+    public class GameSoftDevUI : BehaviourEnabled
     {
         /// <summary>
         /// 開発中のソフト/ハードに関するUI
