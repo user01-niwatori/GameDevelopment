@@ -51,6 +51,11 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             }
         }
 
+        /// <summary>
+        /// 社員が行う仕事
+        /// </summary>
+        private IEmployeeTask _task = default;
+
         #endregion
 
         #region getter/setter
@@ -59,6 +64,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// HP
         /// </summary>
         public IReadOnlyReactiveProperty<int> HP => Data.HP;
+        public void SetHP(int value)
+        {
+            Data.HP.Value = value;
+        }
 
         /// <summary>
         /// プログラム
@@ -80,21 +89,29 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public IReadOnlyReactiveProperty<int> Sound => Data.Param.Sound;
 
+
         /// <summary>
         /// 状態
         /// </summary>
         public IReadOnlyReactiveProperty<EEmployeeState> State => Data.State;
-
-        /// <summary>
-        /// 状態を設定
-        /// </summary>
-        /// <param name="state">状態/param>
         public void SetState(EEmployeeState state)
         {
             Data.State.Value = state;
         }
 
         #endregion
+
+        /// <summary>
+        /// 初期化
+        /// </summary>
+        /// <remarks>
+        /// EmployeeGenerator.csから呼び出される。
+        /// </remarks>
+        public void Initialize(int number)
+        {
+            // 社員の生成順の値が格納されている
+            _number = number;
+        }
 
         /// <summary>
         /// Start
@@ -105,11 +122,12 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             var mover = GetComponent<EmployeeMover>();
             mover?.SetLocation(EmployeeLocationInfo.Position[_number], EmployeeLocationInfo.Rotation[_number]);
 
-            OnUpdate();
+            // 更新処理
+            //OnUpdate();
             CheckData();
 
             // 設定
-            Data.HP.Value = 3;
+            Data.HP.Value = UnityEngine.Random.Range(3, 11);
             Data.Param.Program.Value = UnityEngine.Random.Range(10, 50);
             Data.Param.Graphic.Value = UnityEngine.Random.Range(10, 50);
             Data.Param.Scenario.Value = UnityEngine.Random.Range(10, 50);
@@ -119,28 +137,22 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             _isInitialized.Value = true;
         }
 
-        /// <summary>
-        /// 初期化
-        /// </summary>
-        public void Initialize(int number)
-        {
-            _number   = number;
-        }
+        ///// <summary>
+        ///// 更新処理
+        ///// </summary>
+        //private void OnUpdate()
+        //{
+        //    // 指定秒数経ったら...
+        //    // 仕事中で体力があるなら...
+        //    // HP -= 引く値
+        //    Observable
+        //        .Interval(TimeSpan.FromSeconds(Data.DevelopmentTime))
+        //        .Where(_ => Data.State.Value == EEmployeeState.Work)
+        //        .Where(_ => Data.HP.Value > 0)
+        //        .Subscribe(_ => Data.HP.Value -= SubtractHP)
+        //        .AddTo(this);
 
-        /// <summary>
-        /// 更新処理
-        /// </summary>
-        private void OnUpdate()
-        {
-            // 指定秒数経ったら...
-            // 仕事中で体力があるなら...
-            // HP -= 引く値
-            Observable
-                .Interval(TimeSpan.FromSeconds(Data.DevelopmentTime))
-                .Where(_ => Data.State.Value == EEmployeeState.Work && Data.HP.Value > 0)
-                .Subscribe(_ => Data.HP.Value -= SubtractHP)
-                .AddTo(this);
-        }
+        //}
 
         /// <summary>
         /// データの変化を調べる
@@ -187,8 +199,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             switch(state)
             {
                 case EEmployeeState.Work:
+                    Work();
                     break;
                 case EEmployeeState.Rest:
+                    Rest();
                     break;
                 case EEmployeeState.Sleep:
                     Sleep();
@@ -204,17 +218,21 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// <param name="task">仕事</param>
         private void CheckTask(EEmployeeTask task)
         {
+            // タスクが設定されていなければ処理を返す
+            if (task == EEmployeeTask.None) { return; }
+
             switch (task)
             {
-                case EEmployeeTask.None:
+                case EEmployeeTask.GameSoft:
+                    _task = new ETaskGameSoft(this);
                     break;
                 case EEmployeeTask.GameHard:
-                    Data.State.Value = EEmployeeState.Work;
-                    break;
-                case EEmployeeTask.GameSoft:
-                    Data.State.Value = EEmployeeState.Work;
+                    _task = new ETaskGameHard(this);
                     break;
             }
+
+            Data.State.Value = EEmployeeState.Work;
+            //Debug.Log($"task:{task}");
         }
 
         /// <summary>
@@ -222,7 +240,28 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void Work()
         {
-            
+            // 仕事が無いなら処理を返す
+            //if (_task == null) { return; }
+
+            _task.OnEnter();
+
+            // 指定秒数経ったら...
+            // 更新チェック（falseが返ってきたら処理を終了）
+            // 更新処理
+            // 終了時リソース開放
+            Observable
+                .Interval(TimeSpan.FromSeconds(Data.DevelopmentTime))
+                .TakeWhile(_ => _task.IsUpdate())
+                .Subscribe(_ => _task.OnUpdate(),
+                 () =>
+                 {
+                     _task.OnExit();
+                     //_task = null;
+                 })
+                .AddTo(this);
+
+            //_ => Data.HP.Value > 0
+            //Data.HP.Value -= SubtractHP
         }
 
         /// <summary>
@@ -246,6 +285,15 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                 {
                     Data.HP.Value = _maxHP;
                 });
+        }
+
+        /// <summary>
+        /// 破棄時
+        /// </summary>
+        private void OnDestroy()
+        {
+            _task = null;
+            Data  = null;
         }
 
     }

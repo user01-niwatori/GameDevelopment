@@ -24,9 +24,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         [SerializeField]
         private ObservableEventTrigger _eventTrigger = default;
 
-        /// <summary>
-        /// Start
-        /// </summary>
         private async void Start()
         {
             await _employeeView?.OnInitialized;
@@ -35,13 +32,15 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             // HUD表示
             _eventTrigger
                 .OnPointerEnterAsObservable()
-                .Subscribe(_ => PointerEnter_DisplayHUD());
+                .Subscribe(_ => PointerEnter_DisplayHUD())
+                .AddTo(this);
 
             // マウスがオブジェクトから離れたら
             // HUD非表示
             _eventTrigger
                 .OnPointerExitAsObservable()
-                .Subscribe(_ => PointerExit_HideHUD());
+                .Subscribe(_ => PointerExit_HideHUD())
+                .AddTo(this);
 
             // 初期化完了
             _isInitialized.Value = true;
@@ -52,7 +51,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public void PointerEnter_DisplayHUD()
         {
-            Debug.LogError("かざされました");
             _employeeView.gameObject.SetActive(true);
         }
 

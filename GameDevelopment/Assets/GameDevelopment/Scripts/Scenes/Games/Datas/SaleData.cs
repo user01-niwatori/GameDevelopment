@@ -34,7 +34,6 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// </summary>
         public GameReviewData Review = default;
 
-
         /// <summary>
         /// 売上
         /// </summary>

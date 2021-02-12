@@ -3937,12 +3937,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4792120875133430045}
   - component: {fileID: 4792120875142416373}
+  - component: {fileID: -8997739873867206351}
   - component: {fileID: 4792120875132941624}
   - component: {fileID: 4792120875132941625}
   - component: {fileID: 4792120875132941630}
-  - component: {fileID: -8997739873867206351}
   - component: {fileID: 603134354028674015}
   - component: {fileID: 4792120875132941631}
+  - component: {fileID: 4158064211560096307}
   m_Layer: 0
   m_Name: Employee_01
   m_TagString: Untagged
@@ -3986,6 +3987,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8997739873867206351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792120875132941629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc097be38608104f9704bc32e0afc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4792120875132941624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4024,18 +4037,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _employeeView: {fileID: 3076881795657262337}
   _eventTrigger: {fileID: 603134354028674015}
---- !u!114 &-8997739873867206351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4792120875132941629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc097be38608104f9704bc32e0afc56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &603134354028674015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,6 +4071,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &4158064211560096307
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792120875132941629}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4792120875132941697
 GameObject:
   m_ObjectHideFlags: 0

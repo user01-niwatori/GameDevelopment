@@ -66,7 +66,7 @@ namespace GameDevelopment.Scenes.Companys.Entitys
             GameInfo.User.Company.CurrentOffice.GameSoftProduct = soft;
 
             // 社員の仕事をゲームソフト開発にする。
-            for(int i = 0; i < GameInfo.User.Company.CurrentOffice.EmployeeCount; i++)
+            for (int i = 0; i < GameInfo.User.Company.CurrentOffice.EmployeeCount; i++)
             {
                 GameInfo.User.Company.CurrentOffice.Employees[i].Task.Value = EEmployeeTask.GameSoft;
             }

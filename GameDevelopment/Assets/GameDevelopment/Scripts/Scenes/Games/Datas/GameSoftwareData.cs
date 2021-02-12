@@ -27,5 +27,46 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// パラメーター
         /// </summary>
         public BaseGameParamator Param = new BaseGameParamator();
+
+        /// <summary>
+        /// プログラム追加
+        /// </summary>
+        public void AddProgram(int value)
+        {
+            Param.Program.Value += value;
+        }
+
+        /// <summary>
+        /// グラフィック追加
+        /// </summary>
+        public void AddGraphic(int value)
+        {
+            Param.Graphic.Value += value;
+        }
+
+        /// <summary>
+        /// シナリオ追加
+        /// </summary>
+        public void AddScenario(int value)
+        {
+            Param.Scenario.Value += value;
+        }
+
+        /// <summary>
+        /// サウンド追加
+        /// </summary>
+        public void AddSound(int value)
+        {
+            Param.Sound.Value += value;
+        }
+
+        /// <summary>
+        /// バグ追加
+        /// </summary>
+        public void AddBug(int value)
+        {
+            Param.Bug.Value += value;
+        }
+
     }
 }

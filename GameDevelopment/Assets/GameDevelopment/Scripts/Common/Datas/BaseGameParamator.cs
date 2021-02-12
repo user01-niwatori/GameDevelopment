@@ -28,5 +28,10 @@ namespace GameDevelopment.Common.Datas
         /// サウンド
         /// </summary>
         public IntReactiveProperty Sound = new IntReactiveProperty(0);
+
+        /// <summary>
+        /// バグ
+        /// </summary>
+        public IntReactiveProperty Bug = new IntReactiveProperty(0);
     }
 }

@@ -5126,6 +5126,7 @@ GameObject:
   - component: {fileID: 11866445429579842}
   - component: {fileID: 249733352149246205}
   - component: {fileID: 2263672815537185465}
+  - component: {fileID: 7042057030750135926}
   m_Layer: 0
   m_Name: Employee_06
   m_TagString: Untagged
@@ -5253,6 +5254,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &7042057030750135926
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108010210892454373}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7211747770311684379
 GameObject:
   m_ObjectHideFlags: 0

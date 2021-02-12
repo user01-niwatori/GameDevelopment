@@ -147,6 +147,8 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         public void Close()
         {
             Hide();
+
+            // ゲームソフト情報を初期化する。
             _gameSoft = null;
             _gameSoft = new GameSoftwareData();
             this.gameObject.SetActive(false);
