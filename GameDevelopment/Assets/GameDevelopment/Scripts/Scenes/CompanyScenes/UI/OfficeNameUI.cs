@@ -23,6 +23,9 @@ public class OfficeNameUI : BehaviourEnabled
     [SerializeField]
     private Button _okButton = default;
 
+    /// <summary>
+    /// Start
+    /// </summary>
     private void Start()
     {
         //// 文字の入力が終了したら...

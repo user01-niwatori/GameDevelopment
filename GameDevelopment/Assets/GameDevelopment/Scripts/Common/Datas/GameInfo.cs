@@ -1,4 +1,6 @@
-﻿namespace GameDevelopment.Common.Datas
+﻿using GameDevelopment.Common.Expansions;
+
+namespace GameDevelopment.Common.Datas
 {
     /// <summary>
     /// ゲーム情報

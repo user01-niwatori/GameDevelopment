@@ -128,10 +128,10 @@ namespace GameDevelopment.Scenes.Employees.Entitys
 
             // 設定
             Data.HP.Value = UnityEngine.Random.Range(3, 11);
-            Data.Param.Program.Value = UnityEngine.Random.Range(10, 50);
-            Data.Param.Graphic.Value = UnityEngine.Random.Range(10, 50);
-            Data.Param.Scenario.Value = UnityEngine.Random.Range(10, 50);
-            Data.Param.Sound.Value = UnityEngine.Random.Range(10, 50);
+            Data.Param.Program.Value = UnityEngine.Random.Range(5, 10);
+            Data.Param.Graphic.Value = UnityEngine.Random.Range(5, 10);
+            Data.Param.Scenario.Value = UnityEngine.Random.Range(5, 10);
+            Data.Param.Sound.Value = UnityEngine.Random.Range(5, 10);
 
             // 初期化完了
             _isInitialized.Value = true;
@@ -163,7 +163,8 @@ namespace GameDevelopment.Scenes.Employees.Entitys
             // 現在のHPをHPの最大値として設定する。
             Data.HP
                 .Where(x => x > _maxHP)
-                .Subscribe(x => _maxHP = x);
+                .Subscribe(x => _maxHP = x)
+                .AddTo(this);
 
             // 仕事中にHPが0以下になったら...
             // 家に帰る。
@@ -240,8 +241,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void Work()
         {
-            // 仕事が無いなら処理を返す
-            //if (_task == null) { return; }
 
             _task.OnEnter();
 

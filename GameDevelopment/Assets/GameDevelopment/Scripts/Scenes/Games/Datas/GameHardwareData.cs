@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.Games.Datas
 {

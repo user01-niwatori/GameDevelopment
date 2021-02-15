@@ -85,19 +85,21 @@ namespace GameDevelopment.Scenes.Employees.Datas
             var currentHp = _core.HP.Value - 1;
             _core.SetHP(currentHp);
 
-            var program = Random.Range(_core.Program.Value - 5, _core.Program.Value + 5);
-            var graphic = Random.Range(_core.Graphic.Value - 5, _core.Graphic.Value + 5);
-            var scenario = Random.Range(_core.Scenario.Value - 5, _core.Scenario.Value + 5);
-            var sound = Random.Range(_core.Sound.Value - 5, _core.Sound.Value + 5);
-            var bug = Random.Range(0, 5);
+            var program  = Random.Range(_core.Program.Value - 2, _core.Program.Value + 2);
+            var graphic  = Random.Range(_core.Graphic.Value - 2, _core.Graphic.Value + 2);
+            var scenario = Random.Range(_core.Scenario.Value - 2, _core.Scenario.Value + 2);
+            var sound    = Random.Range(_core.Sound.Value - 2, _core.Sound.Value + 2);
+            var bug      = Random.Range(0, 5);
 
-
+            // 開発中ゲームソフト
             // パラメーターを追加
             GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddProgram(program);
             GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddGraphic(graphic);
             GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddScenario(scenario);
             GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddSound(sound);
             GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddBug(bug);
+
+            //Debug.Log("更新処理");
         }
     }
 

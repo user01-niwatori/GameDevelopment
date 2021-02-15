@@ -68,5 +68,24 @@ namespace GameDevelopment.Scenes.Games.Datas.Scales
             ScaleType = (EDevSoftScaleType)number;
         }
 
+        /// <summary>
+        /// 開発期間を月単位で返す
+        /// </summary>
+        /// <returns></returns>
+        public int GetPeriod()
+        {
+            switch(ScaleType)
+            {
+                case EDevSoftScaleType.Shot:
+                    return 1;
+                case EDevSoftScaleType.Usually:
+                    return 3;
+                case EDevSoftScaleType.Long:
+                    return 6;
+            }
+
+            return -1;
+        }
+
     }
 }

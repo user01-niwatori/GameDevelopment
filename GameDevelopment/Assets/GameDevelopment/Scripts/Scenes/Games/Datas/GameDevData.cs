@@ -17,7 +17,7 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// 開発日情報
         /// </summary>
-        public DevelopmentDate Date = default;
+        public DevelopmentDate Dates = new DevelopmentDate();
 
         /// <summary>
         /// 完成度のパーセント

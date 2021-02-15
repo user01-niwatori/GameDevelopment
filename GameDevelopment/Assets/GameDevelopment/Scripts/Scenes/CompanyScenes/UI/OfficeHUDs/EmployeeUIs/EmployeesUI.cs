@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.EmployeeUIs
 {

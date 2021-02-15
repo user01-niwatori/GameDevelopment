@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UniRx;
+using System;
 using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.Games.Datas
@@ -27,6 +28,36 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// パラメーター
         /// </summary>
         public BaseGameParamator Param = new BaseGameParamator();
+
+        /// <summary>
+        /// 準備
+        /// </summary>
+        public void Setup()
+        {
+            // 開発開始日
+            // 開発終了予定日格納
+            var start                         = GameInfo.Date.Get();
+            var end                           = start.AddMonths(DevInfo.Scale.GetPeriod());
+            DevInfo.Dates.DevStartDate        = new Date(start);
+            DevInfo.Dates.DevEndScheduledDate = new Date(end);
+
+            GameInfo.Date.Time
+                .Subscribe(x => SetCompletionPer(x));
+
+            UnityEngine.Debug.Log($"開発日:{start} 終了予定日:{end}");
+        }
+
+        /// <summary>
+        /// 完成度のパーセントの設定
+        /// </summary>
+        private void SetCompletionPer(DateTime currentDate)
+        {
+            //uint day   = (uint)(DevInfo.Dates.DevEndScheduledDate.Time.Value.Day - currentDate.Day);
+            //uint month = (uint)(DevInfo.Dates.DevEndScheduledDate.Time.Value.Month - currentDate.Month);
+            //uint year  = (uint)(DevInfo.Dates.DevEndScheduledDate.Time.Value.Year - currentDate.Year);
+
+
+        }
 
         /// <summary>
         /// プログラム追加

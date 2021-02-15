@@ -1,4 +1,6 @@
 ﻿using System;
+using UniRx;
+using GameDevelopment.Common.Expansions;
 
 namespace GameDevelopment.Common.Datas
 {
@@ -9,9 +11,19 @@ namespace GameDevelopment.Common.Datas
     public class Date
     {
         /// <summary>
-        /// Sysytem 日付の構造体
+        /// 日付の構造体
         /// </summary>
-        public DateTime D = default;
+        private DateTimeReactiveProperty _time = default;
+        public  IReadOnlyReactiveProperty<DateTime>Time => _time;
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="d"></param>
+        public Date(DateTime d)
+        {
+            _time.Value = d;
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -21,7 +33,7 @@ namespace GameDevelopment.Common.Datas
         /// <param name="day">日</param>
         public Date(int year = 0, int month = 0, int day = 0)
         {
-            D = new DateTime(year, month, day);
+            _time.Value = new DateTime(year, month, day);
         }
 
         /// <summary>
@@ -30,7 +42,7 @@ namespace GameDevelopment.Common.Datas
         /// <param name="num"></param>
         public void AddDays(int num)
         {
-            D = D.AddDays(num);
+            _time.Value = _time.Value.AddDays(num);
         }
 
         /// <summary>
@@ -39,7 +51,7 @@ namespace GameDevelopment.Common.Datas
         /// <param name="num"></param>
         public void AddMonths(int num)
         {
-            D = D.AddMonths(num);
+            _time.Value = _time.Value.AddDays(num);
         }
 
         /// <summary>
@@ -48,7 +60,7 @@ namespace GameDevelopment.Common.Datas
         /// <param name="num"></param>
         public void AddYears(int num)
         {
-            D = D.AddYears(num);
+            _time.Value = _time.Value.AddDays(num);
         }
 
         /// <summary>
@@ -57,8 +69,9 @@ namespace GameDevelopment.Common.Datas
         /// <returns></returns>
         public DateTime Get()
         {
-            return D;
+            return _time.Value;
         }
+
 
         /// <summary>
         /// 表示
@@ -66,7 +79,7 @@ namespace GameDevelopment.Common.Datas
         /// <returns></returns>
         public string Display()
         {
-            return $"{D.Year}/{D.Month.ToString("D2")}/{D.Day.ToString("D2")}";
+            return $"{_time.Value.Year}/{_time.Value.Month.ToString("D2")}/{_time.Value.Day.ToString("D2")}";
         }
         
     }

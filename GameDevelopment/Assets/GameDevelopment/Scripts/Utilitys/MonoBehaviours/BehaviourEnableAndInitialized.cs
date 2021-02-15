@@ -24,7 +24,7 @@ public class BehaviourEnableAndInitialized : MonoBehaviour, IInitialized, IEnabl
             if (_isInitialized.Value) return Observable.Return(Unit.Default);
 
             // 初期化中なら終了後にイベントを発行
-            return _isInitialized.FirstOrDefault(x => !x).AsUnitObservable();
+            return _isInitialized.FirstOrDefault(x => x).AsUnitObservable();
         }
     }
 

@@ -1,23 +1,30 @@
 ﻿using UnityEngine;
+using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Games.Datas;
 using GameDevelopment.Scenes.Games.Datas.Genres;
 using GameDevelopment.Scenes.Games.Datas.Contents;
 using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Employees.Generators;
-using GameDevelopment.Common.Datas;
+using GameDevelopment.Scenes.CompanyScenes.UI.HUDs;
 
 namespace GameDevelopment.Scenes.Companys.Entitys
 {
     /// <summary>
     /// オフィス
     /// </summary>
-    public class Office : BehaviourEnabled
+    public class Office : BehaviourEnableAndInitialized
     {
         /// <summary>
         /// 社員生成器
         /// </summary>
         [SerializeField]
         private EmployeeGenerator _employeeGenerator = default;
+
+        /// <summary>
+        /// HUD
+        /// </summary>
+        [SerializeField]
+        private HUD _HUD = default;
 
         /// <summary>
         /// Start
@@ -56,6 +63,9 @@ namespace GameDevelopment.Scenes.Companys.Entitys
             }
 
             //_employeeGenerator.Initialize();
+
+            // 初期化完了
+            _isInitialized.Value = true;
         }
 
         /// <summary>
@@ -63,13 +73,17 @@ namespace GameDevelopment.Scenes.Companys.Entitys
         /// </summary>
         public void StartGameSoftProduct(GameSoftwareData soft)
         {
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct = soft;
-
+            // 開発するゲームソフトの情報設定。
             // 社員の仕事をゲームソフト開発にする。
+            GameInfo.User.Company.CurrentOffice.GameSoftProduct = soft;
+            GameInfo.User.Company.CurrentOffice.GameSoftProduct.Setup();
             for (int i = 0; i < GameInfo.User.Company.CurrentOffice.EmployeeCount; i++)
             {
                 GameInfo.User.Company.CurrentOffice.Employees[i].Task.Value = EEmployeeTask.GameSoft;
             }
+
+            // ゲームソフト開発中に表示するHUD表示
+            _HUD.StartGameSoftProduct();
         }
     }
 }

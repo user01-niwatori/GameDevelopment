@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using GameDevelopment.Scenes.Companys.Entitys;
 using GameDevelopment.Scenes.Games.Datas;
-using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
 {

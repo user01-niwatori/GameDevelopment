@@ -31,7 +31,6 @@ namespace GameDevelopment.Scenes.Companys.Datas
     [Serializable]
     public class OfficeData
     {
-
         /// <summary>
         /// 名前
         /// </summary>
@@ -171,22 +170,22 @@ namespace GameDevelopment.Scenes.Companys.Datas
             return sales;
         }
 
-        /// <summary>
-        /// ゲームソフト年間売上
-        /// </summary>
-        public int SoftAnnualSales()
-        {
-            int sales = 0;
+        ///// <summary>
+        ///// ゲームソフト年間売上
+        ///// </summary>
+        //public int SoftAnnualSales()
+        //{
+        //    int sales = 0;
 
-            foreach (var soft in GameSofts)
-            {
-                if ((GameInfo.Date.D.Year - soft.DevInfo.Date.ReleaseDate.D.Year) == 0)
-                {
-                    sales += soft.Sales();
-                }
-            }
-            return sales;
-        }
+        //    foreach (var soft in GameSofts)
+        //    {
+        //        if ((GameInfo.Date.Get().Year - soft.DevInfo.Get().ReleaseDate.D.Year) == 0)
+        //        {
+        //            sales += soft.Sales();
+        //        }
+        //    }
+        //    return sales;
+        //}
 
         #endregion
     }

@@ -1,6 +1,6 @@
 ﻿using System;
-using GameDevelopment.Scenes.Employees.Datas;
 using UniRx;
+using GameDevelopment.Scenes.Employees.Datas;
 
 namespace GameDevelopment.Common.Expansions
 {
@@ -22,6 +22,16 @@ namespace GameDevelopment.Common.Expansions
     {
         public EmployeeTaskReactiveProperty() { }
         public EmployeeTaskReactiveProperty(EEmployeeTask initialValue) : base(initialValue) { }
+    }
+
+    /// <summary>
+    /// DateTimeのReactiveProperty版
+    /// </summary>
+    [Serializable]
+    public class DateTimeReactiveProperty : ReactiveProperty<DateTime>
+    {
+        public DateTimeReactiveProperty() { }
+        public DateTimeReactiveProperty(DateTime initialValue) : base(initialValue) { }
     }
 
 }
