@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.EmployeeUIs
@@ -28,6 +29,11 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.EmployeeUIs
             //_returnButton
             //    .OnClickAsObservable()
             //    .Subscribe(_ => )
+
+            _returnButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("戻る"))
+                .AddTo(this);
                 
         }
     }

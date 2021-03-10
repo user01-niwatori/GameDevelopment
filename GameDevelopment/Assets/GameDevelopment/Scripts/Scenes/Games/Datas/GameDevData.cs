@@ -1,5 +1,6 @@
-﻿using System;
-using UniRx;
+﻿using UniRx;
+using System;
+using GameDevelopment.Common.Expansions;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Games.Datas.Genres;
@@ -15,14 +16,14 @@ namespace GameDevelopment.Scenes.Games.Datas
     public class GameDevData
     {
         /// <summary>
+        /// 開発フェーズ
+        /// </summary>
+        public PhaseTypeReactiveProperty Phase = new PhaseTypeReactiveProperty(EPhaseType.Proto);
+
+        /// <summary>
         /// 開発日情報
         /// </summary>
         public DevelopmentDate Dates = new DevelopmentDate();
-
-        /// <summary>
-        /// 完成度のパーセント
-        /// </summary>
-        public IntReactiveProperty CompletionPer = new IntReactiveProperty(0);
     }
 
     /// <summary>

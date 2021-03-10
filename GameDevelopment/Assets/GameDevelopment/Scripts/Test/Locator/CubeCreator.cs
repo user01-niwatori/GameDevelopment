@@ -4,7 +4,7 @@ using System.Collections;
 public class CubeCreator : MonoBehaviour, ICubeCreator
 {
     [SerializeField]
-    private GameObject _cube;
+    private GameObject _cube = default;
 
     public virtual void Create(Vector3 pos)
     {

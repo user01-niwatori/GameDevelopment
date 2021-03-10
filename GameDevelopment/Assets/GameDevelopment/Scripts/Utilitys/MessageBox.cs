@@ -58,6 +58,25 @@ public class MessageBox : BehaviourEnabled
     private bool _isPushedButton = false;
 
     /// <summary>
+    /// オブジェクト表示時
+    /// </summary>
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+        _yesButton.onClick.AddListener(() => OnClick_YesButton());
+        _noButton.onClick.AddListener(() => OnClick_NoButton());
+        _okButton.onClick.AddListener(() => OnClick_OkButton());
+    }
+
+    /// <summary>
+    /// オブジェクト非表示時
+    /// </summary>
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
+
+    /// <summary>
     /// メッセージ初期化　Yes/Noボタン表示
     /// </summary>
     /// <param name="subject">主題</param>
@@ -68,8 +87,8 @@ public class MessageBox : BehaviourEnabled
     {
         _subjectText.text = subject;
         _messageText.text = message;
-        _yesEvent = yesEvent;
-        _noEvent = noEvent;
+        _yesEvent         = yesEvent;
+        _noEvent          = noEvent;
         SetMessageType(MessageType.YesNo);
     }
 
@@ -83,8 +102,8 @@ public class MessageBox : BehaviourEnabled
     public void Initialize_YesNo(string message, UnityAction yesEvent, UnityAction noEvent)
     {
         _messageText.text = message;
-        _yesEvent = yesEvent;
-        _noEvent = noEvent;
+        _yesEvent         = yesEvent;
+        _noEvent          = noEvent;
         SetMessageType(MessageType.YesNo);
     }
 
@@ -98,7 +117,7 @@ public class MessageBox : BehaviourEnabled
     {
         _subjectText.text = subject;
         _messageText.text = message;
-        _okEvent = okEvent;
+        _okEvent          = okEvent;
         SetMessageType(MessageType.Ok);
     }
 
@@ -110,7 +129,7 @@ public class MessageBox : BehaviourEnabled
     public void Initialize_Ok(string message, UnityAction okEvent)
     {
         _messageText.text = message;
-        _okEvent = okEvent;
+        _okEvent　　　　　= okEvent;
         SetMessageType(MessageType.Ok);
     }
 
@@ -223,7 +242,7 @@ public class MessageBox : BehaviourEnabled
     /// <returns></returns>
     private IEnumerator CloseWindow(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime);
         Destroy(this.gameObject);
     }
 }

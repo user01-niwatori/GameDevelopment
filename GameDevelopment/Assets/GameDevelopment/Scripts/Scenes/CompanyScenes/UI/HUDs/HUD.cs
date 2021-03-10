@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-using GameDevelopment.Scenes.CompanyScenes.UI.HUDs.GameSoftProductDevUIs;
+﻿using System;
+using UnityEngine;
+using GameDevelopment.Scenes.CompanyScenes.UI.HUDs.GameSoftProjectDevUIs;
+
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs
 {
@@ -12,14 +14,14 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs
         /// 開発中のゲームソフトの情報
         /// </summary>
         [SerializeField]
-        private GameSoftProductDevUI _gameSoftProductDevUI = default;
+        private GameSoftProjectDevUI _gameSoftProjectDevUI = default;
 
         /// <summary>
         /// ゲームソフト開発開始
         /// </summary>
-        public void StartGameSoftProduct()
+        public void StartGameSoftProject()
         {
-            _gameSoftProductDevUI.DisplayParamUI();
+            _gameSoftProjectDevUI.DisplayParamUI();
         }
     }
 }

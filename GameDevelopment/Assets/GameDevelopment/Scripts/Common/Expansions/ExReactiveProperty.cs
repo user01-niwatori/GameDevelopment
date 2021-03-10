@@ -1,5 +1,6 @@
-﻿using System;
-using UniRx;
+﻿using UniRx;
+using System;
+using GameDevelopment.Scenes.Games.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
 
 namespace GameDevelopment.Common.Expansions
@@ -32,6 +33,16 @@ namespace GameDevelopment.Common.Expansions
     {
         public DateTimeReactiveProperty() { }
         public DateTimeReactiveProperty(DateTime initialValue) : base(initialValue) { }
+    }
+
+    /// <summary>
+    /// EPhaseTypeのReactiveProperty版
+    /// </summary>
+    [Serializable]
+    public class PhaseTypeReactiveProperty : ReactiveProperty<EPhaseType>
+    {
+        public PhaseTypeReactiveProperty() { }
+        public PhaseTypeReactiveProperty(EPhaseType initialValue) : base(initialValue) { }
     }
 
 }

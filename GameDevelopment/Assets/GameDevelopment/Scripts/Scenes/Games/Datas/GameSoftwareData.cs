@@ -1,5 +1,6 @@
 ﻿using UniRx;
 using System;
+using UnityEngine;
 using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.Games.Datas
@@ -27,37 +28,73 @@ namespace GameDevelopment.Scenes.Games.Datas
         /// <summary>
         /// パラメーター
         /// </summary>
-        public BaseGameParamator Param = new BaseGameParamator();
+        public BaseGameSoftParamator Param = new BaseGameSoftParamator();
 
-        /// <summary>
-        /// 準備
-        /// </summary>
-        public void Setup()
-        {
-            // 開発開始日
-            // 開発終了予定日格納
-            var start                         = GameInfo.Date.Get();
-            var end                           = start.AddMonths(DevInfo.Scale.GetPeriod());
-            DevInfo.Dates.DevStartDate        = new Date(start);
-            DevInfo.Dates.DevEndScheduledDate = new Date(end);
+        ///// <summary>
+        ///// 準備
+        ///// </summary>
+        //public void Setup()
+        //{
+        //    // 開発開始日
+        //    // 開発終了予定日格納
+        //    var start                         = GameInfo.Date.Get();
+        //    var end                           = start.AddMonths(DevInfo.Scale.GetPeriod());
+        //    DevInfo.Dates.DevStartDate        = new Date(start);
+        //    DevInfo.Dates.DevEndScheduledDate = new Date(end);
+        //}
 
-            GameInfo.Date.Time
-                .Subscribe(x => SetCompletionPer(x));
+        ///// <summary>
+        ///// 完成度のパーセントの設定
+        ///// </summary>
+        //public void SetProgressRate(DateTime currentDate)
+        //{
+        //    // TODO: 処理に時間がかかる、もっと効率の良い求め方があるかも。
+        //    // 開発に掛かる日数を求める
+        //    // 進行日数を求める
+        //    // 進行率を求める
+        //    var devDays      　　　　= DevInfo.Dates.DevEndScheduledDate.Time.Value - DevInfo.Dates.DevStartDate.Time.Value;
+        //    var progress     　　　　= devDays - (DevInfo.Dates.DevEndScheduledDate.Time.Value - currentDate);
+        //    var ratio        　　　　= (float)progress.Days / (float)devDays.Days;
+        //    int progressRate 　　　　= (int)((Utility.ConvertDecimalPoint(ratio, 2, Utility.MathType.Floor)) * 100);
+        //    Param.ProgressRate.Value = Mathf.Clamp(progressRate, 0, 101);
 
-            UnityEngine.Debug.Log($"開発日:{start} 終了予定日:{end}");
-        }
+        //}
 
-        /// <summary>
-        /// 完成度のパーセントの設定
-        /// </summary>
-        private void SetCompletionPer(DateTime currentDate)
-        {
-            //uint day   = (uint)(DevInfo.Dates.DevEndScheduledDate.Time.Value.Day - currentDate.Day);
-            //uint month = (uint)(DevInfo.Dates.DevEndScheduledDate.Time.Value.Month - currentDate.Month);
-            //uint year  = (uint)(DevInfo.Dates.DevEndScheduledDate.Time.Value.Year - currentDate.Year);
-
-
-        }
+        ///// <summary>
+        ///// 開発フェーズを設定
+        ///// </summary>
+        //public void SetPhase(int progress)
+        //{
+        //    // Alpha 30 ～ 59％
+        //    if(DevInfo.Phase.Value != EPhaseType.Alpha && 
+        //       progress >= 30 && progress < 60)
+        //    {
+        //        DevInfo.Phase.Value = EPhaseType.Alpha;
+        //    }
+        //    // Beta 60 ～ 79％
+        //    else if (DevInfo.Phase.Value != EPhaseType.Beta && 
+        //             progress >= 60 && progress < 80)
+        //    {
+        //        DevInfo.Phase.Value = EPhaseType.Beta;
+        //    }
+        //    // Master 80 ～ 99％
+        //    else if (DevInfo.Phase.Value != EPhaseType.Master &&
+        //             progress >= 80 && progress < 100)
+        //    {
+        //        DevInfo.Phase.Value = EPhaseType.Master;
+        //    }
+        //    // Debug 100% ～
+        //    else if(DevInfo.Phase.Value != EPhaseType.Debug &&
+        //             progress >= 100)
+        //    {
+        //        DevInfo.Phase.Value = EPhaseType.Debug;
+        //    }
+        //    //// Proto それ以外
+        //    //else if(DevInfo.Phase.Value != EPhaseType.Proto)
+        //    //{
+        //    //    DevInfo.Phase.Value = EPhaseType.Proto;
+        //    //}
+        //}
 
         /// <summary>
         /// プログラム追加
@@ -97,7 +134,11 @@ namespace GameDevelopment.Scenes.Games.Datas
         public void AddBug(int value)
         {
             Param.Bug.Value += value;
-        }
 
+            if (Param.Bug.Value < 0)
+            {
+                Param.Bug.Value = 0;
+            }
+        }
     }
 }

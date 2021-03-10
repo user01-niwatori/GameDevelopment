@@ -61,7 +61,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// 移動タイプ
         /// </summary>
         protected ReactiveProperty<EMoveType> _moveType = new ReactiveProperty<EMoveType>();
-        public  IReadOnlyReactiveProperty<EMoveType> MoveType => _moveType;
+        public    IReadOnlyReactiveProperty<EMoveType> MoveType => _moveType;
 
         /// <summary>
         /// 社員のコア部分
@@ -84,13 +84,14 @@ namespace GameDevelopment.Scenes.Employees.Entitys
 
             if (_employeeCore)
             {
+                // 初期位置設定
+                SetLocation(EmployeeLocationInfo.Position[_employeeCore.Number], EmployeeLocationInfo.Rotation[_employeeCore.Number]);
 
                 // 社員の状態を監視し
                 // 状態に変化があれば移動タイプを設定する
                 _employeeCore.State
                              .Subscribe(x => SetMoveType(x))
                              .AddTo(this);
-
 
                 // 移動タイプがMove状態なら
                 // 移動中監視し、状態を変化させたりする。

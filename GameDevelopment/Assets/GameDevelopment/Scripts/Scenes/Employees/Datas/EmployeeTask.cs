@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using GameDevelopment.Scenes.Employees.Entitys;
 using GameDevelopment.Common.Datas;
+using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Scenes.Employees.Entitys;
 
 namespace GameDevelopment.Scenes.Employees.Datas
 {
@@ -82,6 +83,29 @@ namespace GameDevelopment.Scenes.Employees.Datas
         /// </summary>
         public virtual void OnUpdate()
         {
+            // 開発フェーズに合わせて処理を分岐
+            switch(GameInfo.User.Company.CurrentOffice.GameSoftProject.DevInfo.Phase.Value)
+            {
+                case EPhaseType.Proto:
+                case EPhaseType.Alpha:
+                case EPhaseType.Beta:
+                case EPhaseType.Master:
+                    Development();
+                    break;
+                case EPhaseType.Completed:
+                    break;
+                case EPhaseType.Debug:
+                    Debug();
+                    break;
+            }
+
+        }
+
+        /// <summary>
+        /// 開発中
+        /// </summary>
+        private void Development()
+        {
             var currentHp = _core.HP.Value - 1;
             _core.SetHP(currentHp);
 
@@ -89,17 +113,28 @@ namespace GameDevelopment.Scenes.Employees.Datas
             var graphic  = Random.Range(_core.Graphic.Value - 2, _core.Graphic.Value + 2);
             var scenario = Random.Range(_core.Scenario.Value - 2, _core.Scenario.Value + 2);
             var sound    = Random.Range(_core.Sound.Value - 2, _core.Sound.Value + 2);
-            var bug      = Random.Range(0, 5);
+            var bug      = Random.Range(0, 2);
 
             // 開発中ゲームソフト
             // パラメーターを追加
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddProgram(program);
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddGraphic(graphic);
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddScenario(scenario);
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddSound(sound);
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct.AddBug(bug);
+            GameInfo.User.Company.CurrentOffice.GameSoftProject.AddProgram(program);
+            GameInfo.User.Company.CurrentOffice.GameSoftProject.AddGraphic(graphic);
+            GameInfo.User.Company.CurrentOffice.GameSoftProject.AddScenario(scenario);
+            GameInfo.User.Company.CurrentOffice.GameSoftProject.AddSound(sound);
+            GameInfo.User.Company.CurrentOffice.GameSoftProject.AddBug(bug);
+        }
 
-            //Debug.Log("更新処理");
+        /// <summary>
+        /// デバッグ
+        /// </summary>
+        private void Debug()
+        {
+            var currentHp = _core.HP.Value - 1;
+            _core.SetHP(currentHp);
+
+            // バグを修正する。
+            var bug = Random.Range(0, 5);
+            GameInfo.User.Company.CurrentOffice.GameSoftProject.AddBug(-bug);
         }
     }
 

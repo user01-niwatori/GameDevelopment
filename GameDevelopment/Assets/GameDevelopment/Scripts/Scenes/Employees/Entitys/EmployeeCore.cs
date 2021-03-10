@@ -1,5 +1,5 @@
-﻿using System;
-using UniRx;
+﻿using UniRx;
+using System;
 using UnityEngine;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
@@ -30,6 +30,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// OfficeのEmployeesのデータ参照用の添え字として使用
         /// </remarks>
         private int _number = 0;
+        public  int Number => _number;
 
         /// <summary>
         /// 体力の最大値
@@ -89,7 +90,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         public IReadOnlyReactiveProperty<int> Sound => Data.Param.Sound;
 
-
         /// <summary>
         /// 状態
         /// </summary>
@@ -118,20 +118,16 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private void Start()
         {
-            // 移動用クラスで座標設定
-            var mover = GetComponent<EmployeeMover>();
-            mover?.SetLocation(EmployeeLocationInfo.Position[_number], EmployeeLocationInfo.Rotation[_number]);
-
-            // 更新処理
-            //OnUpdate();
+            // データチェック
             CheckData();
 
             // 設定
-            Data.HP.Value = UnityEngine.Random.Range(3, 11);
-            Data.Param.Program.Value = UnityEngine.Random.Range(5, 10);
-            Data.Param.Graphic.Value = UnityEngine.Random.Range(5, 10);
+            Data.HP.Value             = UnityEngine.Random.Range(3, 11);
+            Data.Param.Program.Value  = UnityEngine.Random.Range(5, 10);
+            Data.Param.Graphic.Value  = UnityEngine.Random.Range(5, 10);
             Data.Param.Scenario.Value = UnityEngine.Random.Range(5, 10);
-            Data.Param.Sound.Value = UnityEngine.Random.Range(5, 10);
+            Data.Param.Sound.Value 　 = UnityEngine.Random.Range(5, 10);
+            //Data.DevelopmentTime      = UnityEngine.Random.Range(3, 10);
 
             // 初期化完了
             _isInitialized.Value = true;
@@ -258,9 +254,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
                      //_task = null;
                  })
                 .AddTo(this);
-
-            //_ => Data.HP.Value > 0
-            //Data.HP.Value -= SubtractHP
         }
 
         /// <summary>

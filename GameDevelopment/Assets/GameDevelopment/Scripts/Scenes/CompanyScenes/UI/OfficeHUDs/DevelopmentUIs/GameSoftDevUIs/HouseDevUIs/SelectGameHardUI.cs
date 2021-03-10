@@ -100,7 +100,6 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// </summary>
         private void Start()
         {
-
             // 右ボタン押下時
             // 移動できるなら...
             // 右に移動する
@@ -270,20 +269,23 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         /// <summary>
         /// 水平方向への移動処理（非同期）
         /// </summary>
+        /// <remarks>
+        /// Time.scaleTime時にも動作する
+        /// </remarks>
         /// <param name="dir">移動方向</param>
-        /// <param name="cancellationToken"></param>
+        /// <param name="cancellationToken">キャンセル用トークン</param>
         /// <returns></returns>
         private async UniTask HorizontalMoveAsync(EMoveDir dir, CancellationToken cancellationToken = default)
         {
-            var startTime = Time.timeSinceLevelLoad;
-            var startPos = _content.transform.localPosition;
-            var endPos = startPos + new Vector3(GetMoveDistance(dir), 0f, 0f);
-            _isMoving = true;
+            var startTime = Time.unscaledTime;
+            var startPos  = _content.transform.localPosition;
+            var endPos    = startPos + new Vector3(GetMoveDistance(dir), 0f, 0f);
+            _isMoving     = true;
 
             while (true)
             {
-                var diff = Time.timeSinceLevelLoad - startTime;
-                var rate = diff / MoveTime;
+                var diff                　 = Time.unscaledTime - startTime;
+                var rate                   = diff / MoveTime;
                 _contentRect.localPosition = Vector3.Lerp(startPos, endPos, rate);
 
                 if (rate >= 1f) { break; }
@@ -291,6 +293,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 // キャンセルされていたらOperationCanceledExceptionをスロー
                 // 非同期処理を止める
                 await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
+                
             }
 
             switch (dir)

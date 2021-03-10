@@ -69,7 +69,7 @@ namespace GameDevelopment.Scenes.Companys.Datas
         /// <summary>
         /// 制作中のゲームソフト
         /// </summary>
-        public GameSoftwareData GameSoftProduct = default;
+        public GameSoftwareData GameSoftProject = default;
 
         /// <summary>
         /// コンストラクタ

@@ -25,7 +25,16 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs
         /// </summary>
         public void OnEnable()
         {
+            Time.timeScale = 0f;
             DisplaySelectDevButtonList();
+        }
+
+        /// <summary>
+        /// ゲームオブジェクト非表示時
+        /// </summary>
+        public void OnDisable()
+        {
+            Time.timeScale = 1f;
         }
 
         /// <summary>

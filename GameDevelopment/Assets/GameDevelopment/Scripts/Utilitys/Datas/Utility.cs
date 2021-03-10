@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 /// <summary>
 /// 汎用的なメソッドがまとめられたクラス
 /// </summary>
@@ -33,7 +34,7 @@ public class Utility
     }
 
     /// <summary>
-    /// ワールド座標からUI
+    /// ワールド座標からUI座標に変換
     /// </summary>
     /// <param name="rectCanvas"></param>
     /// <param name="worldPos"></param>
@@ -69,87 +70,41 @@ public class Utility
         a      = b;
         b      = temp;
     }
+
+    /// <summary>
+    /// 数学タイプ
+    /// </summary>
+    public enum MathType
+    {
+        Ceil,       // 切り上げ
+        Floor,      // 切り捨て
+        Round       // 四捨五入
+    };
+
+    /// <summary>
+    /// 小数点の変換処理
+    /// </summary>
+    /// <param name="decimalNumber">小数点第何位まで表示するか？</param>
+    /// <param name="mathType">数学タイプ</param>
+    /// <returns></returns>
+    public static float ConvertDecimalPoint(float value, int decimalNumber, MathType mathType = MathType.Round)
+    {
+        var   magnification = Mathf.Pow(10, decimalNumber);
+        float num           = value * magnification;
+
+        switch (mathType)
+        {
+            case MathType.Ceil:
+                num = Mathf.Ceil(num);
+                break;
+            case MathType.Floor:
+                num = Mathf.Floor(num);
+                break;
+            case MathType.Round:
+                num = Mathf.Round(num);
+                break;
+        }
+        return num / magnification;
+    }
 }
 
-// 振動もう少し強く
-
-
-///// <summary>
-///// 自作のリストクラス
-///// </summary>
-///// <typeparam name="T"></typeparam>
-//public class MyList<T>
-//{
-//    // デフォルトの容量
-//    private const int DefaultCapacity = 4;
-
-//    // 要素を格納する配列
-//    private T[] items = new T[DefaultCapacity];
-
-//    // インデクサ(Indexer)
-//    public T this[int index]
-//    {
-//        get => items[index];
-//        set => items[index] = value;
-//    }
-
-//    // 配列の容量
-//    public int Capacity { get; private set; } = DefaultCapacity;
-
-//    // 配列の要素数
-//    public int Count { get; private set; } = 0;
-
-//    public void Add(T element)
-//    {
-//        // 配列の要素数が足りない
-//        if(Count == Capacity)
-//        {
-//            // 2倍の容量で配列を確保し直す
-//            EnsureCapacity(Capacity * 2);
-//        }
-
-//        items[Count] = element;
-//        Count++;
-//    }
-
-//    private void EnsureCapacity(int newCapacity)
-//    {
-//        Capacity = newCapacity;
-
-//        T[] prevItems = items;
-//        items = new T[Capacity];
-
-//        System.Array.Copy(prevItems, 0, items, 0, Count);
-//    }
-
-//    public void Remove(T element)
-//    {
-//        int index = System.Array.IndexOf(items, element);
-//        RemoveAt(index);
-//    }
-
-//    public void RemoveAt(int index)
-//    {
-//        if (index < 0) { return; }
-
-//        Count--;
-
-//        // [1, 2, 3, 4, 5]で2を消すときは
-//        // [3, 4, 5]を2の位置にコピーして
-//        // [1, 3, 4, 5, 5]とする
-//        // 最後の要素を削除するときはコピー不要
-//        if(index < Count)
-//        {
-//            System.Array.Copy(items, index + 1, items, index, Count - index);
-//        }
-
-//        // 最後の要素が残るのでdefault(intなら0, boolならfalseなどを表す)で上書き
-//        // ※ classならnullが入るというのがポイント
-//        items[Count] = default;
-//    }
-
-//    public void Log()
-//    {
-
-//    }
-//}

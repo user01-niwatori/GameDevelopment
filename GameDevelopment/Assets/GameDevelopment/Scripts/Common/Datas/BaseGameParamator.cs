@@ -29,9 +29,22 @@ namespace GameDevelopment.Common.Datas
         /// </summary>
         public IntReactiveProperty Sound = new IntReactiveProperty(0);
 
+    }
+
+    /// <summary>
+    /// ゲームソフトのベースとなるパラメータ
+    /// </summary>
+    [Serializable]
+    public class BaseGameSoftParamator : BaseGameParamator
+    {
         /// <summary>
         /// バグ
         /// </summary>
         public IntReactiveProperty Bug = new IntReactiveProperty(0);
+
+        /// <summary>
+        /// 進行率
+        /// </summary>
+        public IntReactiveProperty ProgressRate = new IntReactiveProperty(0);
     }
 }

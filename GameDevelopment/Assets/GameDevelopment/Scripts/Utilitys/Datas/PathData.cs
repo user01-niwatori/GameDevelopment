@@ -8,7 +8,7 @@ public class PathData
     /// <summary>
     /// MessageBoxのPath
     /// </summary>
-    public const string MessageBox = "";
+    public const string MessageBox = "Prefabs/MessageBox";
 
     /// <summary>
     /// 社員情報が記載されているPath
@@ -42,4 +42,5 @@ public class PathData
     /// 社員情報IconのPath
     /// </summary>
     public const string EmployeeInfoIcon = "Prefabs/Icons/Employees/EmployeeInfoIcon_";
+
 }

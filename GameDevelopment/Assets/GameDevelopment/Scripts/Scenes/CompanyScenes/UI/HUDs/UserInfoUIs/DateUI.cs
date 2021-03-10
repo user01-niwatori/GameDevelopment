@@ -23,22 +23,17 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs.UserInfoUIs
         /// </summary>
         private void Start()
         {
-            GameInfo.Date = new Date(1980, 1, 1);
+            //GameInfo.Date = new Date(1980, 1, 1);
 
-            // 指定秒数後
-            // 日付を更新
-            Observable
-                .Interval(TimeSpan.FromSeconds(2f))
-                .Subscribe(_ => UpdateDate());
-        }
+            //// 指定秒数後
+            //// 日付を更新
+            //Observable
+            //    .Interval(TimeSpan.FromSeconds(2f))
+            //    .Subscribe(_ => UpdateDate());
 
-        /// <summary>
-        /// 日付を更新する
-        /// </summary>
-        private void UpdateDate()
-        {
-            GameInfo.Date.AddDays(1);
-            _dateText.text = GameInfo.Date.Display();
+            // 日付が更新されたら
+            // テキスト上に表示
+            GameInfo.Date.Time.Subscribe(_ => _dateText.text = GameInfo.Date.Display());
         }
     }
 }

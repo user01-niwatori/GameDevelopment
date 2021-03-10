@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using System;
+using UnityEngine;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Games.Datas;
+using GameDevelopment.Scenes.Games.Entitys;
 using GameDevelopment.Scenes.Games.Datas.Genres;
 using GameDevelopment.Scenes.Games.Datas.Contents;
-using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Employees.Generators;
-using GameDevelopment.Scenes.CompanyScenes.UI.HUDs;
 
 namespace GameDevelopment.Scenes.Companys.Entitys
 {
@@ -21,10 +22,10 @@ namespace GameDevelopment.Scenes.Companys.Entitys
         private EmployeeGenerator _employeeGenerator = default;
 
         /// <summary>
-        /// HUD
+        /// 
         /// </summary>
         [SerializeField]
-        private HUD _HUD = default;
+        private GameSoftProject _gameSoftProject = default;
 
         /// <summary>
         /// Start
@@ -62,7 +63,12 @@ namespace GameDevelopment.Scenes.Companys.Entitys
                
             }
 
-            //_employeeGenerator.Initialize();
+            // 指定秒数後
+            // 日付を更新
+            GameInfo.Date = new Date(1980, 1, 1);
+            Observable
+                .Interval(TimeSpan.FromSeconds(GameInfo.DateUpdateTime))
+                .Subscribe(_ => GameInfo.Date.AddDays(1));
 
             // 初期化完了
             _isInitialized.Value = true;
@@ -71,19 +77,9 @@ namespace GameDevelopment.Scenes.Companys.Entitys
         /// <summary>
         /// ゲームソフト開発のプロジェクトを始める
         /// </summary>
-        public void StartGameSoftProduct(GameSoftwareData soft)
+        public void StartGameSoftProject(GameSoftwareData soft)
         {
-            // 開発するゲームソフトの情報設定。
-            // 社員の仕事をゲームソフト開発にする。
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct = soft;
-            GameInfo.User.Company.CurrentOffice.GameSoftProduct.Setup();
-            for (int i = 0; i < GameInfo.User.Company.CurrentOffice.EmployeeCount; i++)
-            {
-                GameInfo.User.Company.CurrentOffice.Employees[i].Task.Value = EEmployeeTask.GameSoft;
-            }
-
-            // ゲームソフト開発中に表示するHUD表示
-            _HUD.StartGameSoftProduct();
+            _gameSoftProject.Initialized(soft);
         }
     }
 }

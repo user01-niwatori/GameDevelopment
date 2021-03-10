@@ -13,7 +13,7 @@ namespace GameDevelopment.Common.Datas
         /// <summary>
         /// 日付の構造体
         /// </summary>
-        private DateTimeReactiveProperty _time = default;
+        private DateTimeReactiveProperty _time = new DateTimeReactiveProperty();
         public  IReadOnlyReactiveProperty<DateTime>Time => _time;
 
         /// <summary>

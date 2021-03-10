@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using GameDevelopment.Scenes.Employees.Generators;
+using GameDevelopment.Common.Datas;
 
 namespace GameDevelopment.Scenes.CompanyScenes.UI
 {
@@ -71,7 +72,7 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI
             {
                 _clearButton
                     .OnClickAsObservable()
-                    .Subscribe(_ => SaveData.Clear())
+                    .Subscribe(_ => GameInfo.Clear())
                     .AddTo(this);
             }
         }

@@ -57,11 +57,26 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 .Subscribe(_ => _gameSoftDevUI.DisplayHouseDevUI())
                 .AddTo(this);
 
+            _contractDevButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("受託開発"))
+                .AddTo(this);
+
+            _requestButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("依頼開発"))
+                .AddTo(this);
+
             // 閉じるボタン押下時
             // UIを非表示にする。
             _closeButton
                 .OnClickAsObservable()
                 .Subscribe(_ => _gameSoftDevUI.Close())
+                .AddTo(this);
+
+            _returnButton
+                .OnClickAsObservable()
+                .Subscribe(_ => Debug.Log("戻る"))
                 .AddTo(this);
         }
     }

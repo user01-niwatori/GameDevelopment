@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 /// <summary>
 /// アプリケーション 監視/管理クラス
 /// </summary>
@@ -34,8 +35,8 @@ public class ApplicationManager : SingletonMonoBehaviour<ApplicationManager>
     private void Suspend()
     {
         if (m_isSpended) { return; }
-
-        //Debug.LogError("サスペンド処理");
+        //Time.timeScale = 0;
+        Debug.LogError("Suspend");
         m_isSpended = true;
     }
 
@@ -48,8 +49,8 @@ public class ApplicationManager : SingletonMonoBehaviour<ApplicationManager>
     private void Resume()
     {
         if (!m_isSpended) { return; }
-
-        //Debug.LogError("レジューム処理");
+        //Time.timeScale = 1;
+        Debug.LogError("Resume");
         m_isSpended = false;
     }
 
@@ -58,10 +59,5 @@ public class ApplicationManager : SingletonMonoBehaviour<ApplicationManager>
     /// </summary>
     private void OnApplicationQuit()
     {
-        //#if UNITY_EDITOR
-        //            SaveData.SetClass(SaveKey.UserInfoData, GameInfoData.UserInfoData);
-        //            SaveData.SetClass(SaveKey.SoundInfoData, GameInfoData.SoundInfoData);
-        //            SaveData.Save();
-        //#endif
     }
 }

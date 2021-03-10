@@ -1,24 +1,18 @@
-﻿using UniRx;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using GameDevelopment.Common.Datas;
 using GameDevelopment.Scenes.Employees.Datas;
 using GameDevelopment.Scenes.Employees.Tables;
+using GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs;
 
-namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.GameSoftDevUIs.HouseDevUIs
+namespace GameDevelopment.Scenes.CompanyScenes.UI.HUDs.GameSoftProjectDevUIs
 {
     /// <summary>
-    /// ゲームディレクターを選択するUI
+    /// ゲーム開発フェーズUI
     /// </summary>
-    public class SelectGameDirectorUI : BehaviourEnabled
+    public class BaseGamePhaseUI : MonoBehaviour
     {
-        /// <summary>
-        /// 自社開発UI
-        /// </summary>
-        [SerializeField]
-        private HouseDevUI _houseDevUI = default;
-
         /// <summary>
         /// Content
         /// </summary>
@@ -26,59 +20,48 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         private GameObject _content = default;
 
         /// <summary>
-        /// 戻るボタン
-        /// </summary>
-        [SerializeField]
-        private Button _returnButton = default;
-
-        /// <summary>
         /// 決定ボタン
         /// </summary>
         [SerializeField]
-        private Button _okButton = default;
+        protected Button _okButton  = default;
 
         /// <summary>
-        /// 一時保存されたディレクター情報
+        /// 主題
         /// </summary>
-        private EmployeeData _tempDirector = default;
+        [SerializeField]
+        protected Text _messageText = default;
+
+        /// <summary>
+        /// 一時保存された開発者情報
+        /// </summary>
+        /// <remarks>
+        /// 子クラスでも共有のデータとして扱うためStaticにしている。
+        /// </remarks>
+        protected static EmployeeData _tempCreator = null;
 
         /// <summary>
         /// 社員アイコンのリスト
         /// </summary>
-        private List<EmployeeInfoIconUI> _employeeIconList = new List<EmployeeInfoIconUI>(EmployeeTable.MaxEmployee);
+        /// <remarks>
+        /// Staticで共有することによって、メモリの使用量を節約している。
+        /// </remarks>
+        private static List<EmployeeInfoIconUI> _employeeIconList = new List<EmployeeInfoIconUI>(EmployeeTable.MaxEmployee);
 
         /// <summary>
         /// ゲームオブジェクト表示時
         /// </summary>
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
+            Time.timeScale = 0;
             CreateEmployeeList();
         }
 
         /// <summary>
-        /// Start
+        /// ゲームオブジェクト非表示時
         /// </summary>
-        private void Start()
+        protected virtual void OnDisable()
         {
-            // 戻るボタン押下時
-            // 前の画面に戻る
-            _returnButton
-                .OnClickAsObservable()
-                .Subscribe(_ => _houseDevUI.DisplayCreateGameSoftUI())
-                .AddTo(this);
-
-            // 決定ボタン押下時
-            // 選択されたディレクターを設定し、前の画面に戻る。
-            _okButton
-                .OnClickAsObservable()
-                .Subscribe(_ =>
-                {
-                    _houseDevUI.GameSoft.DevInfo.Director = _tempDirector;
-                    _tempDirector = null;
-                    _houseDevUI.DisplayCreateGameSoftUI();
-                })
-                .AddTo(this);
-
+            Time.timeScale = 1f;
         }
 
         /// <summary>
@@ -97,9 +80,14 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 var prefab     = Instantiate(Resources.Load($"{PathData.EmployeeInfoIcon}{employee.ID}"), _content.transform) as GameObject;
                 var iconInfoUI = prefab.GetComponent<EmployeeInfoIconUI>();
                 _employeeIconList.Add(iconInfoUI);
-
                 // 初期化
-                iconInfoUI.Initialize(employee.ID, () => OnClick_SelectGameDirector(employee));
+                iconInfoUI.Initialize(employee.ID, () => OnClick_SelectCreator(employee));
+            }
+
+            // 親オブジェクトを設定
+            foreach(var icon in _employeeIconList)
+            {
+                icon.gameObject.transform.parent = _content.transform;
             }
         }
 
@@ -125,12 +113,12 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
         }
 
         /// <summary>
-        /// ボタン押下時、ディレクター選択
+        /// ボタン押下時、開発者選択
         /// </summary>
         /// <param name="employeeData"></param>
-        private void OnClick_SelectGameDirector(EmployeeData employeeData)
+        private void OnClick_SelectCreator(EmployeeData employeeData)
         {
-            _tempDirector = employeeData;
+            _tempCreator = employeeData;
         }
     }
 }

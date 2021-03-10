@@ -1,5 +1,4 @@
-﻿using GameDevelopment.Common.Expansions;
-
+﻿
 namespace GameDevelopment.Common.Datas
 {
     /// <summary>
@@ -21,6 +20,11 @@ namespace GameDevelopment.Common.Datas
         /// フレームレート
         /// </summary>
         public static int FrameRate = 30;
+
+        /// <summary>
+        /// 日付更新時間
+        /// </summary>
+        public static float DateUpdateTime = 0.1f;
 
         /// <summary>
         /// ユーザーデータ

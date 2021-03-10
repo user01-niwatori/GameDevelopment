@@ -162,8 +162,10 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
             Hide();
 
             // ゲームソフト開発を開始する。
-            _office.StartGameSoftProduct(_gameSoft);
+            _office.StartGameSoftProject(_gameSoft);
             _gameSoft = default;
+            this.gameObject.SetActive(false);
+            _gameSoftDevUI.Close();
         }
 
         #endregion

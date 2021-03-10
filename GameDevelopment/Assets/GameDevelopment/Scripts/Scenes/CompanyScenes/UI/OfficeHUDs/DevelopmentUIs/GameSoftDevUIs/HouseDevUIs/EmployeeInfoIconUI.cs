@@ -38,7 +38,6 @@ namespace GameDevelopment.Scenes.CompanyScenes.UI.OfficeHUDs.DevelopmentUIs.Game
                 .Subscribe(_ => callback())
                 .AddTo(this);
         }
-
         
     }
 }

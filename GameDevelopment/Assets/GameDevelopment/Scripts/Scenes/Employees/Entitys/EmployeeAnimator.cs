@@ -19,7 +19,6 @@ namespace GameDevelopment.Scenes.Employees.Entitys
     /// 社員のアニメータークラス
     /// </summary>
     [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(EmployeeMover))]
     public class EmployeeAnimator : BehaviourInitialized
     {
         /// <summary>
@@ -52,13 +51,16 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// </summary>
         private async void Start()
         {
-            _animator  = GetComponent<Animator>();
-            var mover  = GetComponent<EmployeeMover>();
-            await mover?.OnInitialized;
+            _animator = GetComponent<Animator>();
+            var mover = GetComponent<EmployeeMover>();
+            await mover.OnInitialized;
 
-            // 状態が変わりしだい発行
+            // 移動状態に応じてアニメーション再生
+            mover?.MoveType
+                .Subscribe(x => PlayAnimation(x))
+                .AddTo(this);
+
             // 初期化完了
-            mover?.MoveType.Subscribe(x => PlayAnimation(x));
             _isInitialized.Value = true;
         }
 
@@ -66,7 +68,7 @@ namespace GameDevelopment.Scenes.Employees.Entitys
         /// アニメーションを再生
         /// </summary>
         /// <param name="type">移動タイプ</param>
-        private void PlayAnimation(EMoveType type)
+        public void PlayAnimation(EMoveType type)
         {
             // 再生中のアニメーションを止める
             StopAnimation();
